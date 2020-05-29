@@ -15,5 +15,5 @@ Chạy app trong môi trường test<br />
 
 Build app ở chế độ production trong thư mục `build` (để deploy lên server)<br />
 
-## App được deploy trên hero ku
+## App được deploy trên heroku
 Link: https://hung-kha-renting.herokuapp.com/
