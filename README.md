@@ -2,7 +2,7 @@
 
 ### `npm run dev`
 
-Chạy app trong môi trường dev.<br />
+Chạy app trong môi trường development.<br />
 truy cập [http://localhost:3000](http://localhost:3000) để xem app trong browser.
 
 Trang sẽ tự reload khi thay đổi source code.<br />
