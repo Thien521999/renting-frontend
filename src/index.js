@@ -12,6 +12,7 @@ import * as serviceWorker from './serviceWorker';
 import Sign_in from './pages/sign_in';
 import ForgetPassword from './pages/forget_password';
 import ChangePassword from './pages/change_password';
+import Signup from './pages/sign_up';
 
 ReactDOM.render(
   <Router>
@@ -20,6 +21,7 @@ ReactDOM.render(
         
         <Route path='/' component={Home} exact/>
         <Route path='/login' component={Sign_in}></Route>
+        <Route path='/logup' component={Signup}></Route>
         <Route path="/forget_password" component={ForgetPassword}></Route>
         <Route path="/change_password" component={ChangePassword}></Route>
       </Switch>

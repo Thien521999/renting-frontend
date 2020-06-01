@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import ChangepassForm from './ChangepassForm';
+import './changepass.sass'
 
 
 class ChangePassword extends Component {
     render() {
         return (
-            <div class="container mt-5">
+            <div class="container mt-5 widthform">
                 <div class="row">
-                    <div class="col-4">
-                    </div>
-                    <div class="col-4">
-                        
-                            <ChangepassForm></ChangepassForm>
- 
-                    </div>
+                <ChangepassForm></ChangepassForm>
                 </div>
             </div>
         );

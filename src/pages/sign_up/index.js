@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import './sign_in.sass'
-import SigninForm from './SigninForm';
+import SignupForm from './SignupForm';
 //import './navigationbar.sass'
 //import {Link} from 'react-router-dom'
 
-class Sign_in extends Component {
+class Signup extends Component {
     render() {
         return (
             <div className="container mt-5 widthform">
                 <div className="row">
-                    <SigninForm/>
+                    <SignupForm></SignupForm>
                 </div>
             </div>
         );
     }
 }
-export default Sign_in;
+export default Signup;
