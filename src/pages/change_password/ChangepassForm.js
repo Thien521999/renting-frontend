@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 class ChangepassForm extends Component {
     render() {
         return (
+            <div class="card text-left">
             <form>
                 <div className="container">
                     <div className="row mt-4">
@@ -50,6 +51,7 @@ class ChangepassForm extends Component {
                     </div>
                 </div>
             </form>
+            </div>
         );
     }
 }

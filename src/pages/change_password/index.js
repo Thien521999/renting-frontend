@@ -10,9 +10,9 @@ class ChangePassword extends Component {
                     <div class="col-4">
                     </div>
                     <div class="col-4">
-                        <div class="card text-left">
+                        
                             <ChangepassForm></ChangepassForm>
-                        </div>
+ 
                     </div>
                 </div>
             </div>

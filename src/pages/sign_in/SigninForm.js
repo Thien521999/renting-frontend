@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 class SinginForm extends Component {
     render() {
         return (
-            <form>
+            <form className="signinForm">
                 <div className="container">
                     <div className="row mt-4">
                         <div className="col-4"></div>
