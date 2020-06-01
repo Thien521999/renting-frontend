@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import './sign_in.sass'
-import SinginForm from './SigninForm';
-//import './navigationbar.sass'
+import ForgetpasswordForm from './ForgetpasswordForm';
 //import {Link} from 'react-router-dom'
 
-class Sing_in extends Component {
+class ForgetPassword extends Component {
     render() {
         return (
             <div class="container mt-5">
@@ -13,7 +11,7 @@ class Sing_in extends Component {
                     </div>
                     <div class="col-4">
                         <div class="card text-left">
-                            <SinginForm/>
+                            <ForgetpasswordForm></ForgetpasswordForm>
                         </div>
                     </div>
                 </div>
@@ -21,4 +19,4 @@ class Sing_in extends Component {
         );
     }
 }
-export default Sing_in;
+export default ForgetPassword;

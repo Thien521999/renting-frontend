@@ -1,13 +1,10 @@
 import React from 'react';
-import Post from '../../components/post';
+import Navigationbar from '../../components/Navigationbar';
 
 class Home extends React.Component {
     render() {
         return(
-            <div className="container d-flex justify-content-center" style={{width: 100 + "vw", height: 100 + "vh"}}>
-                <Post />
-
-            </div>
+            <Navigationbar></Navigationbar>
         )
     }
 }
