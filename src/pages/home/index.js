@@ -1,10 +1,17 @@
 import React from 'react';
-import Navigationbar from '../../components/Navigationbar';
+import Navigationbar from '../../components/navigationbar';
+import Post from '../../components/post';
 
 class Home extends React.Component {
     render() {
         return(
-            <Navigationbar></Navigationbar>
+            <div>
+                <Navigationbar></Navigationbar>
+                <Post/>
+                <Post/>
+                <Post/>
+            </div>
+            
         )
     }
 }
