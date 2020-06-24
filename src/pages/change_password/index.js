@@ -6,9 +6,9 @@ import './changepass.sass'
 class ChangePassword extends Component {
     render() {
         return (
-            <div class="container mt-5 widthform">
-                <div class="row">
-                <ChangepassForm></ChangepassForm>
+            <div className="container mt-5 widthform">
+                <div className="row">
+                    <ChangepassForm></ChangepassForm>
                 </div>
             </div>
         );
