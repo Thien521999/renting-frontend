@@ -1,22 +1,18 @@
-import './post.sass';
-import React from 'react';
-import {Link} from 'react-router-dom';
-class Post extends React.Component {
-    render() {
-        return(
-            <div className="container d-flex pt-5 justify-content-center">
-                <div className="card align-self-center">
-                    <div className="row align-items-start">
-                        <div className="col-md-5">
-                            <div className="card-block">
-                                <h4 className="card-title">Post about property</h4>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <br></br>
-                                <Link to="/detail" className="mt-auto btn btn-primary">Read more</Link>
-                            </div>
-                        </div>
+import React, { Component } from 'react';
+import Navigationbar from '../../components/navigationbar';
 
-                        <div className="col-md-7">
+//import './sign_in.sass'
+//import SigninForm from './SigninForm';
+//import './navigationbar.sass'
+//import {Link} from 'react-router-dom'
+
+class Detail extends Component {
+    render() {
+        return (
+            
+            <div>
+                <Navigationbar></Navigationbar>
+                <div className="col-md-7">
                             <div id="carousel" className="card-block carousel slide" data-ride="carousel">
                                 <ol className="carousel-indicators">
                                     <li data-target="#carousel" data-slide-to="0" className="active"/>
@@ -47,11 +43,8 @@ class Post extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
             </div>
-        )
+        );
     }
 }
-
-export default Post;
+export default Detail;

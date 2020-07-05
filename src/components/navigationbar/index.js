@@ -26,12 +26,13 @@ class Navigationbar extends Component {
                             <Link className="nav-link" to="#">About</Link>
                         </li>
                     </ul>
-                    <Link to="/login"><button className="btn btn-outline-light my-2 my-sm-0 mr-2" type="submit">Đăng nhập</button></Link>
-                    <Link to="/logup"><button className="btn btn-outline-light my-2 my-sm-0 mr-2" type="submit">Đăng kí</button></Link>
                     <form className="form-inline">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                        <button className="btn btn-outline-light my-2 my-sm-0 mr-5" type="submit">Search</button>
                     </form>
+                    <Link to="/login"><button className="btn btn-outline-light my-2 my-sm-0 mr-2" type="submit">Đăng nhập</button></Link>
+                    <Link to="/logup"><button className="btn btn-outline-light my-2 my-sm-0 mr-2" type="submit">Đăng kí</button></Link>
+                    
                 </div>
             </nav>
         );
