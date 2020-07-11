@@ -18,12 +18,14 @@ import Detail from './pages/detail';
 
 import store from './store';
 import { Provider } from 'react-redux';
+import Navigationbar from './components/navigationbar';
 
 ReactDOM.render(
   
   <Router>
     <React.StrictMode>
       <Provider store={store}>
+        <Navigationbar></Navigationbar>
         <Switch>
           <Route path='/' component={Home} exact/>
           <Route path='/login' component={Sign_in}></Route>
