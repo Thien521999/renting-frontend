@@ -16,19 +16,23 @@ import Signup from './pages/sign_up';
 import Detail from './pages/detail';
 //import Navigationbar from './components/navigationbar';
 
+import store from './store';
+import { Provider } from 'react-redux';
+
 ReactDOM.render(
   
   <Router>
     <React.StrictMode>
-    
-      <Switch>
-        <Route path='/' component={Home} exact/>
-        <Route path='/login' component={Sign_in}></Route>
-        <Route path='/logup' component={Signup}></Route>
-        <Route path="/forget_password" component={ForgetPassword}></Route>
-        <Route path="/change_password" component={ChangePassword}></Route>
-        <Route path="/detail" component={Detail}></Route>
-      </Switch>
+      <Provider store={store}>
+        <Switch>
+          <Route path='/' component={Home} exact/>
+          <Route path='/login' component={Sign_in}></Route>
+          <Route path='/logup' component={Signup}></Route>
+          <Route path="/forget_password" component={ForgetPassword}></Route>
+          <Route path="/change_password" component={ChangePassword}></Route>
+          <Route path="/detail" component={Detail}></Route>
+        </Switch>
+      </Provider>
     </React.StrictMode>
   </Router>
 ,
