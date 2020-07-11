@@ -5,6 +5,7 @@ import services from './services/sign-in';
 import {connect} from  'react-redux';
 //import Home from './../home';
 import { Redirect } from 'react-router';
+let Hash =require('password-hash');
 //import './navigationbar.sass'
 //import {Link} from 'react-router-dom'
 
@@ -12,8 +13,9 @@ class Sign_in extends Component {
     signIn=(email,password)=>
     {
         //this.props.password=password;
-        console.log("goi ham signIn ở lớp index")
-        this.props.dispatch(services(email,password))
+        console.log("goi ham signIn ở lớp index");
+        let PassWord = Hash.generate(password);
+        this.props.dispatch(services(email,PassWord))
     }
     render() {
         let compo;

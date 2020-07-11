@@ -11,7 +11,7 @@ class SignupForm extends Component {
                     onSubmit={(data)=>
                     {
                         console.log("submit form sign up")
-                        this.props.signUp(data.name,data.phone,data.email,data.password,data.role);
+                        this.props.signUp(data.name,data.phone,data.email,data.password,data.retype,data.role);
                     }}
                 >
                 <Form className="signinForm">

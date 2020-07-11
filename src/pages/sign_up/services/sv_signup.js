@@ -1,6 +1,7 @@
 import { fetch_error, fetch_request, fetch_success } from '../store/signupSlice';
 import axios from'axios';
 
+
 export default (name,phone,email,password,role) => {
     return function(dispatch) {
         dispatch(fetch_request());
