@@ -29,10 +29,19 @@ const userSlice = createSlice({
                 loading: false,
                 status: action.payload
             }
+        },
+
+        fetch_exit:(state, action)=>{
+            return{
+                ...state,
+                loading:false,
+                status:undefined,
+                data:undefined
+            }
         }
     }
 })
 
-export const { fetch_error, fetch_request, fetch_success } = userSlice.actions;
+export const { fetch_error, fetch_request, fetch_success, fetch_exit } = userSlice.actions;
 
 export default userSlice.reducer;

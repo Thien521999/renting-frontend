@@ -2,9 +2,33 @@ import React, { Component } from 'react';
 import 'bootstrap'
 import './navigationbar.sass'
 import {Link} from 'react-router-dom'
+import { connect } from 'react-redux';
+import {fetch_exit} from './../../pages/sign_in/store/signInSlice'
 
 class Navigationbar extends Component {
+    logout = ()=>
+    {
+        this.props.exit(); 
+    }
     render() {
+        const isNotLogin = <span>
+                            <Link to="/login"><button className="btn btn-outline-light my-2 my-sm-0 mr-2" type="submit">Đăng nhập</button></Link>
+                            <Link to="/logup"><button className="btn btn-outline-light my-2 my-sm-0 mr-2" type="submit">Đăng kí</button></Link>
+                            </span>
+        const islogin = <span>
+            <Link to="/login"><button className="btn btn-outline-light my-2 my-sm-0 mr-2" onClick={this.logout}>Đăng xuất</button></Link>
+        </span>
+        const {user}=this.props;
+        console.log(user);
+        let compo;
+        switch (user.status){
+            case 200:
+                compo = islogin;
+                break;
+            default:
+                compo=isNotLogin;
+                break;
+        }
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <Link className="navbar-brand" to="/">Trang chủ</Link>
@@ -30,12 +54,28 @@ class Navigationbar extends Component {
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
                         <button className="btn btn-outline-light my-2 my-sm-0 mr-5" type="submit">Search</button>
                     </form>
-                    <Link to="/login"><button className="btn btn-outline-light my-2 my-sm-0 mr-2" type="submit">Đăng nhập</button></Link>
-                    <Link to="/logup"><button className="btn btn-outline-light my-2 my-sm-0 mr-2" type="submit">Đăng kí</button></Link>
+                    {compo}
                     
                 </div>
             </nav>
         );
     }
 }
-export default Navigationbar;
+
+const mapStateToProps = state =>{
+    return{
+        user: state.user
+    }
+}
+
+const mapDispatchToProps = (dispatch) =>
+{
+    return {
+        exit:()=>
+        {
+            dispatch(fetch_exit());
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Navigationbar);

@@ -19,6 +19,7 @@ import Detail from './pages/detail';
 import store from './store';
 import { Provider } from 'react-redux';
 import Navigationbar from './components/navigationbar';
+import Footer from './components/footer';
 
 ReactDOM.render(
   
@@ -34,6 +35,7 @@ ReactDOM.render(
           <Route path="/change_password" component={ChangePassword}></Route>
           <Route path="/detail" component={Detail}></Route>
         </Switch>
+        <Footer></Footer>
       </Provider>
     </React.StrictMode>
   </Router>

@@ -1,7 +1,7 @@
 import React from 'react';
 //import Navigationbar from '../../components/navigationbar';
 import Post from '../../components/post';
-import Footer from '../../components/footer';
+
 
 class Home extends React.Component {
     render() {
@@ -12,7 +12,7 @@ class Home extends React.Component {
                 <Post/>
                 <Post/>
                 <Post/>
-                <Footer></Footer>
+                
             </div>
             
         )

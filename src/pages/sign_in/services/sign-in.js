@@ -1,5 +1,5 @@
 import { fetch_error, fetch_request, fetch_success } from '../store/signInSlice';
-import axios from'axios';
+import axios from 'axios';
 
 export default (email, password) => {
     return function(dispatch) {

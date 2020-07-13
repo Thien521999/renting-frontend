@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navigationbar from '../../components/navigationbar';
 
 //import './sign_in.sass'
 //import SigninForm from './SigninForm';
@@ -11,7 +10,7 @@ class Detail extends Component {
         return (
             
             <div>
-                <Navigationbar></Navigationbar>
+                
                 <div className="col-md-7">
                             <div id="carousel" className="card-block carousel slide" data-ride="carousel">
                                 <ol className="carousel-indicators">
