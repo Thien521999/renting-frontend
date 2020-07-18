@@ -5,7 +5,7 @@ import services from './services/sv_signup';
 import {connect} from  'react-redux';
 import { Redirect } from 'react-router';
 //const bcrypt=require('bcrypt');
-let Hash  =require('password-hash');
+//let Hash  =require('password-hash');
 //import './navigationbar.sass'
 //import {Link} from 'react-router-dom'
 
@@ -15,12 +15,12 @@ class Signup extends Component {
         //const myPlaintextPassword = 's0/\/\P4$$w0rD';
         
         //const saltRounds = 10;
-        let passwordHash = Hash.generate(password);
-        console.log(passwordHash);
+        //let passwordHash = Hash.generate(password);
+        //console.log(passwordHash);
         if(password===retype)
         {
             console.log("gọi hàm của service")
-            this.props.dispatch(services(name,phone,email,passwordHash,role));
+            this.props.dispatch(services(name,phone,email,password,role));
             
         }
         else
@@ -37,7 +37,7 @@ class Signup extends Component {
                      </div>
         const {user}=this.props;
         switch (user.status){
-            case 200:
+            case 201:
                 compo = <Redirect push to='/login'></Redirect>
                 break;
             default:

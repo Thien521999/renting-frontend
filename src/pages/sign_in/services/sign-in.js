@@ -9,7 +9,12 @@ export default (email, password) => {
             "email": email,
             "password": password
         })
-            .then(res => dispatch(fetch_success(res.data)))
-                .catch(error => dispatch(fetch_error(error)))
+            .then(res =>{
+                console.log(res.data)
+                dispatch(fetch_success(res.data))
+            } )
+                .catch(error =>{
+                    dispatch(fetch_error(error))
+                } )
     }
 }

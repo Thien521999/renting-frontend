@@ -5,7 +5,7 @@ import services from './services/sign-in';
 import {connect} from  'react-redux';
 //import Home from './../home';
 import { Redirect } from 'react-router';
-let Hash =require('password-hash');
+//let Hash =require('password-hash');
 //import './navigationbar.sass'
 //import {Link} from 'react-router-dom'
 
@@ -14,8 +14,9 @@ class Sign_in extends Component {
     {
         //this.props.password=password;
         console.log("goi ham signIn ở lớp index");
-        let PassWord = Hash.generate(password);
-        this.props.dispatch(services(email,PassWord))
+        //let PassWord = Hash.generate(password);
+        //console.log(PassWord);
+        this.props.dispatch(services(email,password))
     }
     render() {
         let compo;
@@ -25,11 +26,25 @@ class Sign_in extends Component {
                 <SigninForm signIn={this.signIn} />
             </div>
         </div>;
+
+        const errorSignIn=
+                            <div className="container mt-5 widthform">
+                                <div className="row">
+                                    <SigninForm signIn={this.signIn} />
+                                    <div>sai user name hoặc mật khẩu</div>
+                                </div>
+                            </div>;
         const {user}=this.props;
+        console.log(user);
         switch(user.status)
             {
                 case 200:
                     compo = <Redirect push to="/"></Redirect>
+                    break;
+                
+                //nếu không tìm đc user
+                case 400:
+                    compo=errorSignIn;
                     break;
                 default:
                     compo = form

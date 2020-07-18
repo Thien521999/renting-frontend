@@ -27,6 +27,7 @@ ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
         <Navigationbar></Navigationbar>
+        
         <Switch>
           <Route path='/' component={Home} exact/>
           <Route path='/login' component={Sign_in}></Route>
@@ -36,6 +37,7 @@ ReactDOM.render(
           <Route path="/detail" component={Detail}></Route>
         </Switch>
         <Footer></Footer>
+        
       </Provider>
     </React.StrictMode>
   </Router>

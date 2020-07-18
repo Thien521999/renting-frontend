@@ -7,7 +7,7 @@ import './footer.sass'
 class Footer extends Component {
     render() {
         return (
-            <div className="footer">
+            <footer className="footer123">
                 <div className="container">
                     <div className="row">
                         <div className="col-4">
@@ -39,7 +39,7 @@ class Footer extends Component {
                 </div>
                 
                 
-            </div>
+            </footer>
         );
     }
 }

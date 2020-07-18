@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Formik, Field ,Form} from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import './signup.sass';
 
 
 class SignupForm extends Component {
     render() {
         return (
-            <div className="card text-left">
+            <div className="card text-left cartform">
                 <Formik
                     initialValues={{email: "",password: "",retype: "",phone:"",name:"",role:"0"}}
                     onSubmit={(data)=>
@@ -13,17 +15,28 @@ class SignupForm extends Component {
                         console.log("submit form sign up")
                         this.props.signUp(data.name,data.phone,data.email,data.password,data.retype,data.role);
                     }}
+                    validationSchema = {Yup.object({
+                        email: Yup.string()
+                            .email('Invalid email address')
+                            .required('required'),
+                        password: Yup.string()
+                            .min(6,"password more than 6 character")
+                            .required('required'),
+                    })}
+
                 >
+                
                 <Form className="signinForm">
                     <div className="container">
                         <div className="row mt-4">
                             
-                            <div className="col-12" align="center">Đăng kí</div>
+                            <div className="col-12" align="center"><b>Đăng kí</b></div>
                         </div>
                         <div className="row mt-2">
                             <div className="col-12">
                                 <div>Email</div>
                                 <Field type="email" name="email" className="form-control"  placeholder="Email" />
+                                <ErrorMessage name="email" id="errorEmail"></ErrorMessage>
                             </div>
                         </div>
                         <div className="row mt-4">
@@ -31,6 +44,7 @@ class SignupForm extends Component {
                             <div className="col-12">
                                 <div>Password</div>
                                 <Field name="password" type="password" className="form-control"  placeholder="password" />
+                                <ErrorMessage name="password"></ErrorMessage>
                             </div>
                         </div>
                         <div className="row mt-4">

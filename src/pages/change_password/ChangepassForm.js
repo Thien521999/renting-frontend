@@ -1,61 +1,69 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import *as Yup from 'yup'
 
 class ChangepassForm extends Component {
     render() {
         return (
-            <div class="card text-left">
-                <form>
+            <div className="card text-left cartform">
+                <Formik
+                    initialValues = {{oldPass:'',newPass:'',retypePass:''}}
+                    onSubmit={(data)=>
+                        {
+                            this.props.ChangePassword(data.oldPass,data.newPass);
+                        }
+                    }
+                    
+                    validationSchema = {
+                        Yup.object({
+                            
+                            retypePass: Yup.string()
+                                .oneOf([Yup.ref('newPass'),null],"not true newpass")
+                        })
+                    }
+                    >
+                    
+                    
+                <Form>
                     <div className="container">
                         <div className="row mt-4">
                             <div className="col-12">
-                                <div align="center">Đổi mật khẩu</div>
+                                <div align="center"><b>Đổi mật khẩu</b></div>
                             </div>
                         </div>
-                        <div className="row mt-2">
-
-                            <div className="col-12">
-                                <div>Username</div>
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email" />
-                            </div>
-                        </div>
-
                         <div className="row mt-4">
-
                             <div className="col-12">
                                 <div>Password cũ</div>
-                                <input type="password" class="form-control" id="inputEmail3" placeholder="password" />
+                                <Field type="password" name="oldPass" className="form-control" id="inputEmail3" placeholder="password" />
                             </div>
                         </div>
                         <div className="row mt-4">
-
                             <div className="col-12">
                                 <div>Password mới</div>
-                                <input type="password" class="form-control" id="inputEmail3" placeholder="password" />
+                                <Field type="password" name="newPass" className="form-control" id="inputEmail3" placeholder="password" />
                             </div>
                         </div>
-
                         <div className="row mt-4">
 
                             <div className="col-12">
                                 <div>Retype password</div>
-                                <input type="password" class="form-control" id="inputEmail3" placeholder="password" />
+                                <Field type="password" name="retypePass" className="form-control" id="inputEmail3" placeholder="password" />
+                                <ErrorMessage name="retypePass"></ErrorMessage>
                             </div>
                         </div>
-
-                        <div className="row">
-                            <div className="col-12 mt-2 mb-2">
+                        <div className="row mt-4 mb-5">
+                            <div className="col-6">
                                 <Link to="/forget_password">Bạn quên mật khẩu?</Link>
                             </div>
-                        </div>
-                        <div className="row mt-4 mb-4">
                             <div className="col-6">
-                                <button name="" id="" class="btn btn-primary" type="submit">Đổi mật khẩu</button>
+                                <button name="" id="" className="btn btn-primary" type="submit">Đổi mật khẩu</button>
                             </div>
-
                         </div>
+                        
                     </div>
-                </form>
+                </Form>
+                </Formik>
             </div>
         );
     }

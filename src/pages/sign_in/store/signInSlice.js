@@ -5,7 +5,8 @@ const userSlice = createSlice({
     initialState: {
         loading: false, 
         data: undefined,
-        status: undefined
+        status: undefined,
+        displayMenu: false
     },
     reducers: {
         fetch_request: (state, action) => {
@@ -23,11 +24,14 @@ const userSlice = createSlice({
             state.loading = false;
         },
 
-        fetch_error: (state, action) => {
+        fetch_error: (state,action) => {
+            console.log(action.payload)
+
             return {
                 ...state,
                 loading: false,
-                status: action.payload
+                status:400
+                //status: action.payload
             }
         },
 
@@ -38,10 +42,19 @@ const userSlice = createSlice({
                 status:undefined,
                 data:undefined
             }
+        },
+
+        fetch_displayMenu:(state,action)=>
+        {
+            let display=!state.displayMenu;
+            return{
+                ...state,
+                displayMenu:display
+            }
         }
     }
 })
 
-export const { fetch_error, fetch_request, fetch_success, fetch_exit } = userSlice.actions;
+export const { fetch_error, fetch_request, fetch_success, fetch_exit, fetch_displayMenu } = userSlice.actions;
 
 export default userSlice.reducer;
