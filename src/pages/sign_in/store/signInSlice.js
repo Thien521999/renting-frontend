@@ -1,13 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+let initState=JSON.parse(localStorage.getItem('stateUser'));
+let State =  {
+    loading: false, 
+    data: undefined,
+    status: undefined,
+    displayMenu: false
+}
+State = initState?initState:State;
 const userSlice = createSlice({
     name: 'user',
-    initialState: {
-        loading: false, 
-        data: undefined,
-        status: undefined,
-        displayMenu: false
-    },
+    initialState: State,
     reducers: {
         fetch_request: (state, action) => {
             return {
@@ -22,6 +24,7 @@ const userSlice = createSlice({
             state.data = data;
             state.status = status;
             state.loading = false;
+            localStorage.setItem('stateUser', JSON.stringify(state));
         },
 
         fetch_error: (state,action) => {
@@ -36,11 +39,12 @@ const userSlice = createSlice({
         },
 
         fetch_exit:(state, action)=>{
+            localStorage.setItem('stateUser', null);
             return{
                 ...state,
                 loading:false,
                 status:undefined,
-                data:undefined
+                data:undefined,
             }
         },
 

@@ -5,7 +5,6 @@ export default (email, password,newpassword) => {
     return function (dispatch) {
         dispatch(fetch_request());
         console.log("service changge pass");
-        //chưa sửa
         axios.post('http://localhost:5000/user/change-password', {
             "email": email,
             "oldPass": password,
