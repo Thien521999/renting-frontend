@@ -9,7 +9,7 @@ class SigninForm extends Component {
     
     render() {
         return (
-            <div className="card text-left cartform">
+            <div className="card text-left">
                 <Formik
                     initialValues={ {email: '', password: ''} }
                     onSubmit={(data)=>{

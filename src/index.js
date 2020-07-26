@@ -20,12 +20,15 @@ import store from './store';
 import { Provider } from 'react-redux';
 import Navigationbar from './components/navigationbar';
 import Footer from './components/footer';
+import Header from './components/Header';
+import User from './pages/user';
 
 ReactDOM.render(
   
   <Router>
     <React.StrictMode>
       <Provider store={store}>
+        <Header></Header>
         <Navigationbar></Navigationbar>
         
         <Switch>
@@ -35,9 +38,9 @@ ReactDOM.render(
           <Route path="/forget_password" component={ForgetPassword}></Route>
           <Route path="/change_password" component={ChangePassword}></Route>
           <Route path="/detail" component={Detail}></Route>
+          <Route path='/user' component={User}></Route>
         </Switch>
         <Footer></Footer>
-        
       </Provider>
     </React.StrictMode>
   </Router>

@@ -16,7 +16,30 @@ class Navigationbar extends Component {
         
         this.props.setDisPlayMenu();
     }
+    HandlerScroll=()=>
+    {
+        let ele = document.getElementById("Navigation");
+        var lastScrollTop = 230;
+        var st = window.pageYOffset || document.documentElement.scrollTop;
+        console.log(st);
+        if(st>=lastScrollTop)
+        {
+            ele.style.top=0;
+            ele.style.position="fixed";
+            ele.style.display="block";
+            ele.style.zIndex=100;
+            ele.style.width='100%'
+        }
+        else
+        {
+            ele.style.top=150;
+            ele.style.position="relative";
+            ele.style.display="block";
+            ele.style.zIndex=100;
+        }
+    }
     render() {
+        window.addEventListener('scroll',this.HandlerScroll)
         const isNotLogin = <span>
                             <Link to="/login"><button className="btn btn-outline-light my-2 my-sm-0 mr-2" type="submit">Đăng nhập</button></Link>
                             <Link to="/logup"><button className="btn btn-outline-light my-2 my-sm-0 mr-2" type="submit">Đăng kí</button></Link>
@@ -57,7 +80,7 @@ class Navigationbar extends Component {
             menu=<div></div>
         }
         return (
-            <div>
+            <div id="Navigation">
                 <nav className="navbar navbar-expand-lg navbar-dark bg-primary navigation">
                 <Link className="navbar-brand" to="/">Trang chủ</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,16 +89,16 @@ class Navigationbar extends Component {
                 <div className="collapse navbar-collapse" id="navbarColor02">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <Link className="nav-link" to="#">Home <span className="sr-only">(current)</span></Link>
+                            <Link className="nav-link" to="#">Thuê chung cư <span className="sr-only">(current)</span></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/login">Đăng nhập</Link>
+                            <Link className="nav-link" to="#">Thuê nhà tọ</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="#">Pricing</Link>
+                            <Link className="nav-link" to="#">Thuê nhà riêng</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="#">About</Link>
+                            <Link className="nav-link" to="/user">Thông tin</Link>
                         </li>
                     </ul>
                     <form className="form-inline">

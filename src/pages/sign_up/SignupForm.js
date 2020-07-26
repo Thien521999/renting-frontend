@@ -7,7 +7,7 @@ import './signup.sass';
 class SignupForm extends Component {
     render() {
         return (
-            <div className="card text-left cartform">
+            <div className="card text-left">
                 <Formik
                     initialValues={{email: "",password: "",retype: "",phone:"",name:"",role:"0"}}
                     onSubmit={(data)=>
