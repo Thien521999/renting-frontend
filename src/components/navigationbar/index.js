@@ -19,7 +19,8 @@ class Navigationbar extends Component {
     HandlerScroll=()=>
     {
         let ele = document.getElementById("Navigation");
-        var lastScrollTop = 230;
+        
+        var lastScrollTop = 0;
         var st = window.pageYOffset || document.documentElement.scrollTop;
         console.log(st);
         if(st>=lastScrollTop)
@@ -28,11 +29,11 @@ class Navigationbar extends Component {
             ele.style.position="fixed";
             ele.style.display="block";
             ele.style.zIndex=100;
-            ele.style.width='100%'
+            ele.style.width='100%';
         }
         else
         {
-            ele.style.top=150;
+            ele.style.top=0;
             ele.style.position="relative";
             ele.style.display="block";
             ele.style.zIndex=100;

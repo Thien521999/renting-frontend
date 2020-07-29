@@ -20,15 +20,17 @@ import store from './store';
 import { Provider } from 'react-redux';
 import Navigationbar from './components/navigationbar';
 import Footer from './components/footer';
-import Header from './components/Header';
+// import Header from './components/Header';
 import User from './pages/user';
+import Admin from './pages/admin';
+import UploadPost from './pages/upload-post';
 
 ReactDOM.render(
   
   <Router>
     <React.StrictMode>
       <Provider store={store}>
-        <Header></Header>
+        {/* <Header></Header> */}
         <Navigationbar></Navigationbar>
         
         <Switch>
@@ -39,6 +41,8 @@ ReactDOM.render(
           <Route path="/change_password" component={ChangePassword}></Route>
           <Route path="/detail" component={Detail}></Route>
           <Route path='/user' component={User}></Route>
+          <Route path='/admin' component={Admin}></Route>
+          <Route path='/upload_post' component={UploadPost}></Route>
         </Switch>
         <Footer></Footer>
       </Provider>
