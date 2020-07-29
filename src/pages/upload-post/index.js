@@ -3,6 +3,8 @@ import './upload.sass';
 import InforRengting from "../../components/inforrenting";
 import EditorConvertToHTML from "../../components/edittor";
 import UploadImage from "../../components/uploadimage";
+import {connect} from 'react-redux'
+import SlideImage from "../../components/slideimage";
 
 
 class UploadPost extends Component
@@ -17,13 +19,20 @@ class UploadPost extends Component
                              <InforRengting></InforRengting>
                         </div>
                         <div className="col-7">
+                            <UploadImage></UploadImage>
+                            <SlideImage></SlideImage>
+                        </div>
+                        <div>
+                            
+                        </div>
+                    </div>
+                    <div className="row">
+                    <div className="col-12">
                             <EditorConvertToHTML></EditorConvertToHTML>
                         </div>
                     </div>
                     <div className="row mt-5">
-                        <div className="col-4">
-                            <UploadImage></UploadImage>
-                        </div>
+                        
                     </div>
 
                 </div>
@@ -31,4 +40,4 @@ class UploadPost extends Component
         );
     }
 }
-export default UploadPost;
+export default connect()(UploadPost);

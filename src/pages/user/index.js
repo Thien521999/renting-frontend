@@ -18,7 +18,7 @@ class User extends Component {
                                         <b>UserName: </b><p className="card-text">trannhutkha123456@gmail.com</p>
                                         <b>Vai trò: </b><p>Admin</p>
                                         <b>sdt: </b><p>0398977491</p>
-                                        <Link class="btn btn-primary" to="/change_password" type="submit">Đổi mật khẩu</Link>
+                                        <Link className="btn btn-primary" to="/change_password" type="submit">Đổi mật khẩu</Link>
                                     </div>
                                 </div>
                                 <div className="user gr-btn">

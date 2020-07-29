@@ -16,29 +16,28 @@ class Navigationbar extends Component {
         
         this.props.setDisPlayMenu();
     }
-    HandlerScroll=()=>
-    {
-        let ele = document.getElementById("Navigation");
+    // HandlerScroll=()=>
+    // {
+    //     let ele = document.getElementById("Navigation");
         
-        var lastScrollTop = 0;
-        var st = window.pageYOffset || document.documentElement.scrollTop;
-        console.log(st);
-        if(st>=lastScrollTop)
-        {
-            ele.style.top=0;
-            ele.style.position="fixed";
-            ele.style.display="block";
-            ele.style.zIndex=100;
-            ele.style.width='100%';
-        }
-        else
-        {
-            ele.style.top=0;
-            ele.style.position="relative";
-            ele.style.display="block";
-            ele.style.zIndex=100;
-        }
-    }
+    //     var lastScrollTop = 0;
+    //     var st = window.pageYOffset || document.documentElement.scrollTop;
+    //     if(st>=lastScrollTop)
+    //     {
+    //         ele.style.top=0;
+    //         ele.style.position="fixed";
+    //         ele.style.display="block";
+    //         ele.style.zIndex=100;
+    //         ele.style.width='100%';
+    //     }
+    //     else
+    //     {
+    //         ele.style.top=0;
+    //         ele.style.position="relative";
+    //         ele.style.display="block";
+    //         ele.style.zIndex=100;
+    //     }
+    // }
     render() {
         window.addEventListener('scroll',this.HandlerScroll)
         const isNotLogin = <span>
