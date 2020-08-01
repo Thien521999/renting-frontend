@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
 
 import './slide.sass';
 
 class SlideImage extends Component {
     render() {
-        let images = this.props.images;
+        let images = this.props.Images;
         let compo;
+        const length=images.length
         let imageslide = images.map((image,index)=>{
-            if(index===0)
+            if(index===length-1)
             {
                 compo=<div className="carousel-item active" key={index}>
                 <img src={image}  className="d-block" alt="property"/>
@@ -57,9 +57,5 @@ class SlideImage extends Component {
     }
 }
 
-const mapStateToProps=state=>{
-   return{
-        images:state.uploadimage.data
-   }
-}
-export default connect(mapStateToProps)(SlideImage);
+
+export default SlideImage;

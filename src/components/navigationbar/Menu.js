@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './navigationbar.sass'
+import { Link } from 'react-router-dom';
 //import { Link } from 'react-router-dom'
 
 class Menu extends Component {
@@ -11,19 +12,19 @@ class Menu extends Component {
                 <div className="row">
                     <div className="col-1"></div>
                     <div className="col10">
-                        <span>Thông tin cá nhân</span>
+                        <Link to="/user">Thông tin cá nhân</Link>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-1"></div>
                     <div className="col10">
-                        <span>Bài đăng của tôi</span>
+                        <Link>Bài đăng của tôi</Link>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-1"></div>
                     <div className="col10">
-                        <span>Đăng xuất</span>
+                        <Link>Đăng xuất</Link>
                     </div>
                 </div>
             </div>

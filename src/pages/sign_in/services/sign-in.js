@@ -4,13 +4,13 @@ import axios from 'axios';
 export default (email, password) => {
     return function(dispatch) {
         dispatch(fetch_request());
-        console.log("service");
+        //console.log("service");
         axios.post('http://localhost:5000/user/get', {
             "email": email,
             "password": password
         })
             .then(res =>{
-                console.log(res.data)
+                //console.log(res.data)
                 dispatch(fetch_success(res.data))
             } )
                 .catch(error =>{

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetch_addImage} from '../../pages/upload-post/store/uploadSlice'
+import {fetch_addImage} from './store/uploadImageSlice'
 //import SlideImage from '../slideimage'
 
 class UploadImage extends Component
@@ -47,7 +47,7 @@ class UploadImage extends Component
 }
 const mapStateToProps = state =>{
     return{
-        images: state.uploadimage.data
+        images: state.uploadimage.dataimage
     }
 }
 

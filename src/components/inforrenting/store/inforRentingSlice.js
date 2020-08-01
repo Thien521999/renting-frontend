@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const UploadPostSlice = createSlice({
-    name: 'uploadpost',
+const InforRengtingSlice = createSlice({
+    name: 'inforRenting',
     initialState: {
         loading: false, 
-        dataimage: [],
+        data: undefined,
         status: undefined
     },
     reducers: {
@@ -32,19 +32,25 @@ const UploadPostSlice = createSlice({
             }
         },
         
-        fetch_addImage:(state,action)=>{    
-            state.dataimage.push(action.payload)
+        fetch_addInfor:(state,action)=>{    
+            
+            console.log(action.payload)
+            state.data=action.payload
+            // return{
+            //     ...state,
+            //     loading:true
+            // }
         },
-        fetch_reset:(state,action)=>
-        {
+
+        fetch_reset:(state,action)=>{
             return{
                 ...state,
-                dataimage:[]
+                data:undefined
             }
         }
     }
 })
 
-export const { fetch_error, fetch_request, fetch_success, fetch_addImage } = UploadPostSlice.actions;
+export const { fetch_error, fetch_request, fetch_success, fetch_addInfor } = InforRengtingSlice.actions;
 
-export default UploadPostSlice.reducer;
+export default InforRengtingSlice.reducer;

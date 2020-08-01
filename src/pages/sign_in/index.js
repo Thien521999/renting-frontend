@@ -5,9 +5,7 @@ import services from './services/sign-in';
 import {connect} from  'react-redux';
 //import Home from './../home';
 import { Redirect } from 'react-router';
-//let Hash =require('password-hash');
-//import './navigationbar.sass'
-//import {Link} from 'react-router-dom'
+//import Post from './../../components/post'
 
 class Sign_in extends Component {
     signIn=(email,password)=>
@@ -52,6 +50,7 @@ class Sign_in extends Component {
             }
         return (
             <div>
+                
                 {compo}
             </div>
         );

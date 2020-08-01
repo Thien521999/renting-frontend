@@ -1,35 +1,33 @@
 import React, { Component } from 'react';
-//import { EditorState, convertToRaw } from 'draft-js';
+import {convertToRaw } from 'draft-js';
 //import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
-//import draftToHtml from 'draftjs-to-html';
+import draftToHtml from 'draftjs-to-html';
 //import htmlToDraft from 'html-to-draftjs';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { connect } from 'react-redux';
+import {fetch_editorChange} from './store/edtSlice'
 
 
 class EditorConvertToHTML extends Component {
-    // state = {
-    //     editorState: EditorState.createEmpty(),
-    // }
-
-    // onEditorStateChange = (editorState) => {
-    //     console.log(editorState)
-    //     this.setState({
-    //         editorState,
-    //     });
-    // };
+    onEditorStateChange = (editorState) => {
+        
+        let a = (String(draftToHtml(convertToRaw(editorState.getCurrentContent()))))
+        document.getElementById("haha").innerHTML= a
+        this.props.EditorChange(a);
+        
+    };
     render() {
-        //const { editorState } = this.state;
+        
         return (
             <div>
                 <div className="EDIT">
                     <Editor
-                        
-                        //editorState={editorState}
+                        initialEditorState={this.props.editorState}
                         toolbarClassName="toolbarClassName"
                         wrapperClassName="wrapperClassName"
                         editorClassName="editorClassName"
-                        //onEditorStateChange={this.onEditorStateChange}
+                        onEditorStateChange={this.onEditorStateChange}
                     />
                 </div>
                 <div>
@@ -38,10 +36,26 @@ class EditorConvertToHTML extends Component {
                     
                 {/* <textarea
                     disabled
-                    value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
+                    value={this.props.editorState}
                 /> */}
+                <div id="haha">
+                    
+                </div>
             </div>
         );
     }
 }
-export default EditorConvertToHTML;
+const mapStateToProps=state=>{
+    return{
+        editorState: state.edtState.editorState
+    }
+}
+
+const mapDispatchToProps=dispatch=>{
+    return{
+        EditorChange:(editorState)=>{
+            dispatch(fetch_editorChange(editorState))
+        }
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(EditorConvertToHTML);

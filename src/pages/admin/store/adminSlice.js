@@ -1,10 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const UploadPostSlice = createSlice({
-    name: 'uploadpost',
+const adminSlice = createSlice({
+    name: 'admin',
     initialState: {
-        loading: false, 
-        dataimage: [],
+        loading: false,
+        dp_dt_user:false,
+        dp_dt_request:false,
+        datausers: [],
+        requestupgrade:[],
         status: undefined
     },
     reducers: {
@@ -32,19 +35,19 @@ const UploadPostSlice = createSlice({
             }
         },
         
-        fetch_addImage:(state,action)=>{    
-            state.dataimage.push(action.payload)
+        fetch_displayusers:(state,action)=>{    
+            //console.log("đã đến đay chưa")
+            state.dp_dt_user=true;
+            state.dp_dt_request=false;
         },
-        fetch_reset:(state,action)=>
+        fetch_displayrequest:(state,action)=>
         {
-            return{
-                ...state,
-                dataimage:[]
-            }
+            state.dp_dt_user=false;
+            state.dp_dt_request=true;
         }
     }
 })
 
-export const { fetch_error, fetch_request, fetch_success, fetch_addImage } = UploadPostSlice.actions;
+export const { fetch_error, fetch_request, fetch_success, fetch_displayusers,fetch_displayrequest } = adminSlice.actions;
 
-export default UploadPostSlice.reducer;
+export default adminSlice.reducer;
