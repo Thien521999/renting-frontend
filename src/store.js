@@ -7,6 +7,7 @@ import edtStateReduce from './components/edittor/store/edtSlice'
 import inforRentingRducer from './components/inforrenting/store/inforRentingSlice'
 import uploadImageReducer from './components/uploadimage/store/uploadImageSlice'
 import adminReducer from './pages/admin/store/adminSlice'
+import homeReducer from './pages/home/store/homeSlice'
 
 export default configureStore({
     reducer: {
@@ -17,6 +18,7 @@ export default configureStore({
         edtState: edtStateReduce,
         inforRenting: inforRentingRducer,
         uploadimage: uploadImageReducer,
-        admin: adminReducer
+        admin: adminReducer,
+        home: homeReducer
     }
 })

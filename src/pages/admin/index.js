@@ -3,6 +3,7 @@ import GuideContent from './../../components/guide-content'
 import { connect } from 'react-redux';
 import './admin.sass'
 import ManageUser from '../../components/mana_user';
+import RequestUpgrade from '../../components/requestupgrade';
 
 class Admin extends Component {
     render() {
@@ -14,7 +15,7 @@ class Admin extends Component {
         }
         if(this.props.dataAdmin.dp_dt_request)
         {
-            compo=<div>hiển thị yêu cầu duyệt nân cấp tài khoảng</div>
+            compo=<RequestUpgrade></RequestUpgrade>
         }
         return (
             <div className="pageAdmin">

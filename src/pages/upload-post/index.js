@@ -5,17 +5,27 @@ import EditorConvertToHTML from "../../components/edittor";
 import UploadImage from "../../components/uploadimage";
 import {connect} from 'react-redux'
 import SlideImage from "../../components/slideimage";
-
+import services from "./services/upload_post"
 
 class UploadPost extends Component
 {
    uploadPost=()=>{
         const images = this.props.listImage;
         const editor = this.props.EditorState;
-        const infor = this.props.infor;
-        console.log(images);
-        console.log(editor);
-        console.log(infor)
+        const infor = this.props.infor.data;
+        const informationRoom={
+            name: infor.name,
+            description: editor,
+            price: infor.price,
+            address: infor.address,
+            area: infor.area,
+            water: infor.water,
+            electric: infor.electric,
+            owner: this.props.iduser,
+            images: images
+        }
+        console.log(informationRoom);
+        this.props.dispatch(services(infor.name,editor,infor.price,infor.address,infor.area,infor.water,infor.electric,this.props.iduser,images))
    }
     render()
     {
@@ -56,7 +66,8 @@ const mapStateToProps = state =>{
     return{
         listImage: state.uploadimage.dataimage,
         EditorState: state.edtState.editorState,
-        infor: state.inforRenting
+        infor: state.inforRenting,
+        iduser: state.user.data.id
     }
 }
 export default connect(mapStateToProps)(UploadPost);

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import './userItem.sass'
 import { BsFillPersonCheckFill } from "react-icons/bs";
-class UserItem extends Component
+
+class RequestItem extends Component
 {
     render(){
         return (
@@ -16,11 +16,11 @@ class UserItem extends Component
                         <b>Số bài đăng: </b>
                         <span>100</span>
                     </div>
-                    <button type="button" class="btn btn-outline-success">chi tiết</button>
+                    <button type="button" class="btn btn-outline-success">Nâng cấp</button>
                 </div>
                 <hr></hr>
             </div>
         );
     }
 }
-export default UserItem;
+export default RequestItem;

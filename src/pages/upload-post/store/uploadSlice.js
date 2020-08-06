@@ -17,7 +17,7 @@ const UploadPostSlice = createSlice({
 
         fetch_success: (state, action) => {
             let { data, status } = action.payload;
-            
+            console.log("upload thành công")
             console.log(action.payload);
             state.data = data;
             state.status = status;
@@ -25,11 +25,12 @@ const UploadPostSlice = createSlice({
         },
 
         fetch_error: (state, action) => {
-            return {
-                ...state,
-                loading: false,
-                status: action.payload
-            }
+            console.log("upload thất bại")
+            // return {
+            //     ...state,
+            //     loading: false,
+            //     status: action.payload
+            // }
         },
         
         fetch_addImage:(state,action)=>{    

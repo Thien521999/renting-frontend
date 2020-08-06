@@ -3,14 +3,30 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 class Post extends React.Component {
     render() {
+        const data = this.props.data;
+        const images = data.images;
+        const slide = images.map((image,index)=>{
+            if(index===0)
+            {
+                return <div className="carousel-item active" key={index}>
+                <img src={image} className="d-block" alt="property"/>
+            </div>
+            }
+            else
+            {
+                return <div className="carousel-item" key={index}>
+                <img src={image} className="d-block" alt="property"/>
+            </div>
+            }
+        })
         return(
             <div className="container d-flex pt-5 justify-content-center">
                 <div className="card align-self-center">
                     <div className="row align-items-start">
                         <div className="col-md-5">
                             <div className="card-block">
-                                <h4 className="card-title">Post about property</h4>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h4 className="card-title">Cho thuê trọ</h4>
+                                <p className="card-text">{data.name}</p>
                                 <br></br>
                                 <Link to="/detail" className="mt-auto btn btn-primary">Read more</Link>
                             </div>
@@ -25,17 +41,7 @@ class Post extends React.Component {
                                 </ol>
 
                                 <div className="carousel-inner">
-                                    <div className="carousel-item active">
-                                        <img src="https://www.livingspaces.com/globalassets/images/inspiration/boho_livingroom_250750_1.jpg" className="d-block" alt="property"/>
-                                    </div>
-
-                                    <div className="carousel-item">
-                                        <img src="https://www.livingspaces.com/globalassets/images/blog/2018/12/1214_budget_living_room_square.jpg" className="d-block" alt="property"/>
-                                    </div>
-
-                                    <div className="carousel-item">
-                                        <img src="https://www.livingspaces.com/globalassets/images/inspiration/boho_livingroom_250750_1.jpg" className="d-block" alt="property"/>
-                                    </div>
+                                    {slide}
 
                                     <a className="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                                         <span className="carousel-control-prev-icon" aria-hidden="true"/>

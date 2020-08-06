@@ -16,12 +16,14 @@ class InforRengting extends Component {
             <div>
                 <div className="card card-infor">
                 <Formik
-                    initialValues={ {address: '', price: '',area:'', water:'',electric:'',owner:''} }
+                    initialValues={ {name:'',address: '', price: '',area:'', water:'',electric:''} }
                     onSubmit={(data)=>{
                     //console.log(data);
                     this.confirmInfor(data);
                     }}
                     validationSchema={Yup.object({
+                        name:Yup.string()
+                            .required(),
                         address: Yup.string()
                             .required('requied'),
                         price:Yup.number()
@@ -32,8 +34,6 @@ class InforRengting extends Component {
                             .required('requied'),
                         electric: Yup.string()
                             .required('requied'),
-                        owner: Yup.string()
-                            .required('requied'),
                     })}
                 >
                     <Form className="signinForm">
@@ -43,8 +43,11 @@ class InforRengting extends Component {
                             </div>
                             <div className="row mt-2">
                                 <div className="col-12">
+                                    <div>Tên</div>
+                                    <Field name="name" className="form-control" placeholder="Địa chỉ" />
+                                    <ErrorMessage name="name"></ErrorMessage>
                                     <div>Địa chỉ</div>
-                                    <Field name="address" className="form-control" placeholder="Địa chỉ" />
+                                    <Field name="address" className="form-control" placeholder="tên bài đăng" />
                                     <ErrorMessage name="address"></ErrorMessage>
                                     <div className='mt-3'>Giá thuê</div>
                                     <Field name="price" type='number'  className="form-control" placeholder="Giá thuê" />
@@ -62,9 +65,7 @@ class InforRengting extends Component {
                                     <div className='mt-3'>Giá điện</div>
                                     <Field name="electric" type='number' className="form-control" placeholder="Giá điện" />
                                     <ErrorMessage name="electric"></ErrorMessage>
-                                    <div className='mt-3'>Chủ trọ</div>
-                                    <Field name="owner" className="form-control" placeholder="Chủ trọ" />
-                                    <ErrorMessage name="owner"></ErrorMessage>
+                                    
                                 </div>
                             </div>
                             
@@ -97,4 +98,5 @@ const mapDispatchToProps=dispatch=>{
         }
     }
 }
+
  export default connect(null,mapDispatchToProps)(InforRengting);

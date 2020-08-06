@@ -27,9 +27,6 @@ class UploadImage extends Component
         )
         const file = await res.json();
         const linkimg=file.secure_url;
-        //document.getElementById('anhupload').src=linkimg;
-        //console.log(file);
-        //addImg(linkimg);
         
         this.addImg(linkimg)
     }
@@ -40,7 +37,6 @@ class UploadImage extends Component
                 <input name="file" id="" className="btn btn-primary" type="file"
                     onChange={this.UploadImage}
                 />
-                
             </div>
         );
     }
