@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import './detail.sass'
+import './detail.sass';
+import { connect } from 'react-redux';
 import Table from './Table';
-//import Comment from'./../../components/comment'
+// import Comment from'./../../components/comment'
 
-//import './sign_in.sass'
-//import SigninForm from './SigninForm';
-//import './navigationbar.sass'
-//import {Link} from 'react-router-dom'
+// import './sign_in.sass'
+// import SigninForm from './SigninForm';
+// import './navigationbar.sass'
+// import {Link} from 'react-router-dom'
 /*
 <div>
                 <div className="container d-flex pt-5 justify-content-center">
@@ -88,11 +89,11 @@ import Table from './Table';
                     </div>
 
                 </div>
-                
+
                 <div className="container d-flex pt-5 justify-content-center">
-                    
+
                     <div className="card align-self-center pl-3 pt-3 pb-4">
-                        
+
                         CHO THUÊ CĂN HỘ MINI CAO CẤP FULL NỘI THẤT GIÁ CHỈ TỪ 3,5 TRIỆU.
                         <br></br>
                         - Căn hộ mới xây, sạch sẽ, thoáng mát, tiện nghi, rất tiện lợi di chuyển đi Q7, Q4, Q2, Q1, Bình Thạnh, siêu thị coopmart, chợ Phú Thuận, gần nhiều bệnh viện, trường học, làng đại học<br></br>
@@ -114,68 +115,76 @@ import Table from './Table';
                         Đóng tiền phòng 24 tháng được tặng 03 tháng tiếp theo
                     </div>
                 </div>
-                
-                
-                 
-                
+
             </div>
 */
 class Detail extends Component {
-    render() {
-        return (
-            <div>
-                <div className="container d-flex pt-5 justify-content-center">
-                    <div className="card align-self-center">
-                        <div className="row align-items-start">
-                            <div className="col-md-12">
-                                <div id="carousel" className="card-block carousel slide" data-ride="carousel">
-                                    <ol className="carousel-indicators">
-                                        <li data-target="#carousel" data-slide-to="0" className="active" />
-                                        <li data-target="#carousel" data-slide-to="1" />
-                                        <li data-target="#carousel" data-slide-to="2" />
-                                    </ol>
-
-                                    <div className="carousel-inner">
-                                        <div className="carousel-item active">
-                                            <img src="https://www.livingspaces.com/globalassets/images/inspiration/boho_livingroom_250750_1.jpg" className="d-block" alt="property" />
-                                        </div>
-
-                                        <div className="carousel-item">
-                                            <img src="https://www.livingspaces.com/globalassets/images/blog/2018/12/1214_budget_living_room_square.jpg" className="d-block" alt="property" />
-                                        </div>
-
-                                        <div className="carousel-item">
-                                            <img src="https://www.livingspaces.com/globalassets/images/inspiration/boho_livingroom_250750_1.jpg" className="d-block" alt="property" />
-                                        </div>
-
-                                        <a className="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                                            <span className="carousel-control-prev-icon" aria-hidden="true" />
-                                        </a>
-
-                                        <a className="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                                            <span className="carousel-control-next-icon" aria-hidden="true" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-
-                <div className="container">
-                    <div className="row">
-                        <div className="col-1">
-
-                        </div>
-                        <div className="col-10">
-                        <Table></Table>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+  render() {
+    const { infor } = this.props;
+    // const images = [];
+    const { images } = infor;
+    console.log(infor);
+    const slide = images.map((any, index) => {
+      let compo;
+      if (index === 0) {
+        compo = (
+          <div className="carousel-item active" key={index}>
+            <img src={any} className="d-block" alt="property" />
+          </div>
         );
-    }
+      } else {
+        compo = (
+          <div className="carousel-item" key={index}>
+            <img src={any} className="d-block" alt="property" />
+          </div>
+        );
+      }
+      return compo;
+    });
+    return (
+      <div>
+        <div className="container d-flex pt-5 justify-content-center">
+          <div className="card align-self-center">
+            <div className="row align-items-start">
+              <div className="col-md-12">
+                <div id="carousel" className="card-block carousel slide" data-ride="carousel">
+                  <ol className="carousel-indicators">
+                    <li data-target="#carousel" data-slide-to="0" className="active" />
+                    <li data-target="#carousel" data-slide-to="1" />
+                    <li data-target="#carousel" data-slide-to="2" />
+                  </ol>
+
+                  <div className="carousel-inner">
+                    {slide}
+
+                    <a className="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                      <span className="carousel-control-prev-icon" aria-hidden="true" />
+                    </a>
+
+                    <a className="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                      <span className="carousel-control-next-icon" aria-hidden="true" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="container">
+          <div className="row">
+            <div className="col-1" />
+            <div className="col-10">
+              <Table data={infor} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
-export default Detail;
+const mapStateToProps = state => ({
+  infor: state.detail.data
+});
+export default connect(mapStateToProps)(Detail);

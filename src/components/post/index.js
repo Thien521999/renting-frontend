@@ -1,8 +1,10 @@
 import './post.sass';
 import React from 'react';
 import { connect } from 'react-redux';
+
+import { Link } from 'react-router-dom';
 import services from './service/sv_post';
-// import {Link} from 'react-router-dom';
+
 class Post extends React.Component {
     Detail= id => {
       // console.log(id);
@@ -13,9 +15,6 @@ class Post extends React.Component {
     render() {
       const { data } = this.props;
       const { images } = data;
-      // let div = document.createElement('DIV');
-      // div.innerHTML=data.description;
-      // document.getElementsByClassName("card-text").innerHTML=data.description
       const slide = images.map((image, index) => {
         if (index === 0) {
           return (
@@ -40,7 +39,7 @@ class Post extends React.Component {
                   <h4 className="card-title">Thuê trọ</h4>
                   <div className="card-text" id="hahaha">{data.name}</div>
                   <br />
-                  <button onClick={() => this.Detail(data.id)} className="mt-auto btn btn-primary">Read more</button>
+                  <Link to="/detail" onClick={this.Detail(data.id)} className="mt-auto btn btn-primary">Read more</Link>
                 </div>
               </div>
 

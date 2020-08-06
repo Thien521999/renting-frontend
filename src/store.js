@@ -8,6 +8,7 @@ import inforRentingRducer from './components/inforrenting/store/inforRentingSlic
 import uploadImageReducer from './components/uploadimage/store/uploadImageSlice';
 import adminReducer from './pages/admin/store/adminSlice';
 import homeReducer from './pages/home/store/homeSlice';
+import detailReducer from './pages/detail/store/detailSlice';
 
 export default configureStore({
   reducer: {
@@ -19,6 +20,7 @@ export default configureStore({
     inforRenting: inforRentingRducer,
     uploadimage: uploadImageReducer,
     admin: adminReducer,
-    home: homeReducer
+    home: homeReducer,
+    detail: detailReducer
   }
 });

@@ -15,7 +15,8 @@ const homeSlice = createSlice({
 
     fetchSuccess: (state, action) => ({
       ...state,
-      data: action.payload
+      data: action.payload.data,
+      status: action.payload.status
     }),
 
     // fetch_error: (state, action) => {
