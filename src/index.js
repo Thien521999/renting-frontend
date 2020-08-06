@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './index.sass';
 
+import { Provider } from 'react-redux';
 import Home from './pages/home';
 import * as serviceWorker from './serviceWorker';
 import Sign_in from './pages/sign_in';
@@ -14,10 +15,9 @@ import ForgetPassword from './pages/forget_password';
 import ChangePassword from './pages/change_password';
 import Signup from './pages/sign_up';
 import Detail from './pages/detail';
-//import Navigationbar from './components/navigationbar';
+// import Navigationbar from './components/navigationbar';
 
 import store from './store';
-import { Provider } from 'react-redux';
 import Navigationbar from './components/navigationbar';
 import Footer from './components/footer';
 // import Header from './components/Header';
@@ -26,29 +26,28 @@ import Admin from './pages/admin';
 import UploadPost from './pages/upload-post';
 
 ReactDOM.render(
-  
+
   <Router>
     <React.StrictMode>
       <Provider store={store}>
         {/* <Header></Header> */}
-        <Navigationbar></Navigationbar>
-        
+        <Navigationbar />
+
         <Switch>
-          <Route path='/' component={Home} exact/>
-          <Route path='/login' component={Sign_in}></Route>
-          <Route path='/logup' component={Signup}></Route>
-          <Route path="/forget_password" component={ForgetPassword}></Route>
-          <Route path="/change_password" component={ChangePassword}></Route>
-          <Route path="/detail" component={Detail}></Route>
-          <Route path='/user' component={User}></Route>
-          <Route path='/admin' component={Admin}></Route>
-          <Route path='/upload_post' component={UploadPost}></Route>
+          <Route path="/" component={Home} exact />
+          <Route path="/login" component={Sign_in} />
+          <Route path="/logup" component={Signup} />
+          <Route path="/forget_password" component={ForgetPassword} />
+          <Route path="/change_password" component={ChangePassword} />
+          <Route path="/detail" component={Detail} />
+          <Route path="/user" component={User} />
+          <Route path="/admin" component={Admin} />
+          <Route path="/upload_post" component={UploadPost} />
         </Switch>
-        <Footer></Footer>
+        <Footer />
       </Provider>
     </React.StrictMode>
-  </Router>
-,
+  </Router>,
   document.getElementById('root')
 );
 
