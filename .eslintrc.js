@@ -37,6 +37,10 @@ module.exports = {
     'import/no-dynamic-require': 'off',
     'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
     'react/prefer-stateless-function': 'off',
-    'jsx-a11y/anchor-is-valid': 'off'
+    'jsx-a11y/anchor-is-valid': 'off',
+    'react/prop-types': 'off',
+    'react/no-array-index-key': 'off',
+    'react/button-has-type': 'off'
+
   },
 };
