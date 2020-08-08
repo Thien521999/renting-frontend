@@ -13,21 +13,31 @@ const detailSlice = createSlice({
       loading: true
     }),
 
-    fetchSuccess: (state, action) => ({
-      ...state,
-      data: action.payload.data[0],
-      status: action.payload.status
-    }),
+    fetchSuccess: (state, action) => {
+      console.log(action.payload.status);
+
+      return {
+        ...state,
+        data: action.payload.data[0],
+        status: action.payload.status
+      };
+    },
     fetchError: state => ({
       ...state,
       data: {}
+    }),
+    fetchReset: state => ({
+      ...state,
+      data: undefined,
+      status: undefined,
+      loading: false
     })
 
   }
 });
 
 export const {
-  fetchError, fetchRequest, fetchSuccess
+  fetchError, fetchRequest, fetchSuccess, fetchReset
 } = detailSlice.actions;
 
 export default detailSlice.reducer;

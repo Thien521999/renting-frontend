@@ -4,16 +4,16 @@ import './table.sass';
 class Table extends Component {
   render() {
     const { data } = this.props;
-    console.log(data);
+    // console.log(data);
     const table2 = (
       <div>
         <table className="table TableCT">
           <thead className="thead-dark">
             <tr>
               <th className="col">Thông tin</th>
-              <th className="" />
-              <th className="col" />
-              <th className="" />
+              <th> </th>
+              <th className="col"> </th>
+              <th> </th>
             </tr>
           </thead>
           <tbody>

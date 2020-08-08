@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './detail.sass';
 import { connect } from 'react-redux';
 import Table from './Table';
+
 // import Comment from'./../../components/comment'
 
 // import './sign_in.sass'
@@ -119,28 +120,41 @@ import Table from './Table';
             </div>
 */
 class Detail extends Component {
+  componentDidMount = () => {
+    this.Description();
+  }
+
+  Description=() => {
+    const a = document.getElementById('hahaha');
+    a.innerHTML = this.props.infor.description;
+  }
+
   render() {
     const { infor } = this.props;
     // const images = [];
     const { images } = infor;
-    console.log(infor);
-    const slide = images.map((any, index) => {
-      let compo;
-      if (index === 0) {
-        compo = (
-          <div className="carousel-item active" key={index}>
-            <img src={any} className="d-block" alt="property" />
-          </div>
-        );
-      } else {
-        compo = (
-          <div className="carousel-item" key={index}>
-            <img src={any} className="d-block" alt="property" />
-          </div>
-        );
-      }
-      return compo;
-    });
+    // this.ditmeno();
+    const { status } = this.props;
+    let slide = <div>Không có dữ liệu</div>;
+    if (status === 200) {
+      slide = images.map((any, index) => {
+        let compo;
+        if (index === 0) {
+          compo = (
+            <div className="carousel-item active" key={index}>
+              <img src={any} className="d-block" alt="property" />
+            </div>
+          );
+        } else {
+          compo = (
+            <div className="carousel-item" key={index}>
+              <img src={any} className="d-block" alt="property" />
+            </div>
+          );
+        }
+        return compo;
+      });
+    }
     return (
       <div>
         <div className="container d-flex pt-5 justify-content-center">
@@ -179,12 +193,21 @@ class Detail extends Component {
               <Table data={infor} />
             </div>
           </div>
+          <div className="row">
+            <div className="col-1"> </div>
+            <div className="col-10 ml-2">
+              <div id="hahaha"> </div>
+            </div>
+          </div>
         </div>
+
       </div>
     );
   }
 }
 const mapStateToProps = state => ({
-  infor: state.detail.data
+  infor: state.detail.data,
+  status: state.detail.status
 });
+
 export default connect(mapStateToProps)(Detail);
