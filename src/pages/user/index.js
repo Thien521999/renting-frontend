@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './user.sass';
 import { connect } from 'react-redux';
 import { AiFillMail, AiFillPhone } from 'react-icons/ai';
@@ -64,8 +64,6 @@ class User extends Component {
           </div>
         </div>
       );
-    } else {
-      main = <Redirect push to="/login" />;
     }
 
     return (

@@ -1,5 +1,6 @@
 import React from 'react';
 // import Navigationbar from '../../components/navigationbar';
+import './home.sass';
 import { connect } from 'react-redux';
 import Post from '../../components/post';
 import services from './service/sv_home';
@@ -16,7 +17,7 @@ class Home extends React.Component {
       const { data } = this.props;
       const component = data.map((any, index) => <Post key={index} data={any} />);
       return (
-        <div>
+        <div className="HomePage">
           {component}
         </div>
 

@@ -61,6 +61,6 @@ const mapStateToProps = state => ({
   listImage: state.uploadimage.dataimage,
   EditorState: state.edtState.editorState,
   infor: state.inforRenting,
-  iduser: state.user.data.id
+  iduser: state.user.data.id,
 });
 export default connect(mapStateToProps)(UploadPost);

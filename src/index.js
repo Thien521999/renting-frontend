@@ -19,12 +19,13 @@ import Detail from './pages/detail';
 
 import store from './store';
 import Navigationbar from './components/navigationbar';
-// import Footer from './components/footer';
+import Footer from './components/footer';
 // import Header from './components/Header';
 import User from './pages/user';
 import Admin from './pages/admin';
 import UploadPost from './pages/upload-post';
 import NotFound from './pages/notfound';
+import PrivateRouter from './components/privateRoute';
 
 ReactDOM.render(
   <Router>
@@ -38,16 +39,16 @@ ReactDOM.render(
           <Route path="/login" component={Signin} />
           <Route path="/logup" component={Signup} />
           <Route path="/forget_password" component={ForgetPassword} />
-          <Route path="/change_password" component={ChangePassword} />
+          <PrivateRouter path="/change_password" component={ChangePassword} />
           <Route path="/detail/:id" component={Detail} />
-          <Route path="/user" component={User} />
+          <PrivateRouter path="/user" component={User} />
           <Route path="/admin" component={Admin} />
-          <Route path="/upload_post" component={UploadPost} />
+          <PrivateRouter path="/upload_post" component={UploadPost} />
           <Route component={NotFound} />
         </Switch>
-        {/* <footer>
+        <footer>
           <Footer />
-        </footer> */}
+        </footer>
       </Provider>
     </React.StrictMode>
   </Router>,
