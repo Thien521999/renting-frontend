@@ -1,9 +1,7 @@
 import './post.sass';
 import React from 'react';
 import { connect } from 'react-redux';
-
-// import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import services from './service/sv_post';
 
 class Post extends React.Component {
@@ -50,7 +48,7 @@ class Post extends React.Component {
                 <h4 className="card-title">{data.name}</h4>
                 <div className="card-text card-description" id={data.id}> </div>
                 <br />
-                <button onClick={() => this.Detail(data.id)} className="mt-auto btn btn-primary">Read more</button>
+                <Link to={`/detail/${data.id}`} className="mt-auto btn btn-primary">Read more</Link>
               </div>
             </div>
 
@@ -79,25 +77,10 @@ class Post extends React.Component {
         </div>
       </div>
     );
-    const { check } = this.props;
-    let component;
-    switch (check) {
-      case 200:
-        component = <Redirect push to="/detail" />;
-        break;
-
-        // nếu không tìm đc user
-      case 400:
-        component = <div />;
-        break;
-      default:
-        component = compo;
-        break;
-    }
 
     return (
       <div>
-        {component}
+        {compo}
       </div>
     );
   }

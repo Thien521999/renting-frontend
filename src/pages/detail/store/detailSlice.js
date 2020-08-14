@@ -14,8 +14,7 @@ const detailSlice = createSlice({
     }),
 
     fetchSuccess: (state, action) => {
-      console.log(action.payload.status);
-
+      console.log(action.payload.data);
       return {
         ...state,
         data: action.payload.data[0],

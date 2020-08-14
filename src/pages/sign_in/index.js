@@ -20,7 +20,7 @@ class Sign_in extends Component {
       let compo;
       // const ele=<Home></Home>;
       const form = (
-        <div className="container mt-5 widthform">
+        <div className="container mt-5 widthform mt-20">
           <div className="row">
             <SigninForm signIn={this.signIn} />
           </div>
@@ -28,7 +28,7 @@ class Sign_in extends Component {
       );
 
       const errorSignIn = (
-        <div className="container mt-5 widthform">
+        <div className="container mt-5 widthform mt-20">
           <div className="row">
             <SigninForm signIn={this.signIn} />
             <div>sai user name hoặc mật khẩu</div>
