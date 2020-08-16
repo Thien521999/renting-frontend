@@ -48,7 +48,7 @@ class Post extends React.Component {
                 <h4 className="card-title">{data.name}</h4>
                 <div className="card-text card-description" id={data.id}> </div>
                 <br />
-                <Link to={`/detail/${data.id}`} className="mt-auto btn btn-primary">Read more</Link>
+                <Link to={`/detail/id=${data.id}`} className="mt-auto btn btn-primary">Read more</Link>
               </div>
             </div>
 

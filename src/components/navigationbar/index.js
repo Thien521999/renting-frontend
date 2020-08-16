@@ -3,6 +3,7 @@ import 'bootstrap';
 import './navigationbar.sass';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import { fetch_exit, fetch_displayMenu } from '../../pages/sign_in/store/signInSlice';
 import Menu from './Menu';
 
@@ -14,30 +15,8 @@ class Navigationbar extends Component {
     clickMenu=() => {
       this.props.setDisPlayMenu();
     }
-    // HandlerScroll=()=>
-    // {
-    //     let ele = document.getElementById("Navigation");
 
-    //     var lastScrollTop = 0;
-    //     var st = window.pageYOffset || document.documentElement.scrollTop;
-    //     if(st>=lastScrollTop)
-    //     {
-    //         ele.style.top=0;
-    //         ele.style.position="fixed";
-    //         ele.style.display="block";
-    //         ele.style.zIndex=100;
-    //         ele.style.width='100%';
-    //     }
-    //     else
-    //     {
-    //         ele.style.top=0;
-    //         ele.style.position="relative";
-    //         ele.style.display="block";
-    //         ele.style.zIndex=100;
-    //     }
-    // }
     render() {
-      window.addEventListener('scroll', this.HandlerScroll);
       const isNotLogin = (
         <span>
           <Link to="/login"><button className="btn btn-outline-light my-2 my-sm-0 mr-2" type="submit">Đăng nhập</button></Link>
@@ -97,7 +76,7 @@ class Navigationbar extends Component {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="#">Thuê nhà tọ</Link>
+                  <Link className="nav-link" to="#">Thuê nhà trọ</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="#">Thuê nhà riêng</Link>

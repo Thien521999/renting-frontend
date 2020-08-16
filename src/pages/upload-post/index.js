@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './upload.sass';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import InforRengting from '../../components/inforrenting';
 import EditorConvertToHTML from '../../components/edittor';
 import UploadImage from '../../components/uploadimage';
 import SlideImage from '../../components/slideimage';
 import services from './services/upload_post';
+import Loading from '../../components/loading';
 
 class UploadPost extends Component {
     uploadPost = () => {
@@ -28,7 +30,7 @@ class UploadPost extends Component {
     }
 
     render() {
-      return (
+      let component = (
         <div className="EditorText">
           <div className="container">
             <div className="row">
@@ -55,6 +57,18 @@ class UploadPost extends Component {
           </div>
         </div>
       );
+      if (this.props.role !== 1) { component = <Redirect push to="/notfound" />; }
+      if (this.props.upload.status === 201) {
+        const { id } = this.props.upload.data;
+        component = <Redirect push to={`/detail/id=${id}`} />;
+      }
+
+      return (
+        <div>
+          {this.props.loading ? <Loading /> : <div />}
+          {component}
+        </div>
+      );
     }
 }
 const mapStateToProps = state => ({
@@ -62,5 +76,8 @@ const mapStateToProps = state => ({
   EditorState: state.edtState.editorState,
   infor: state.inforRenting,
   iduser: state.user.data.id,
+  role: state.user.data.role,
+  loading: state.uploadpost.loading,
+  upload: state.uploadpost
 });
 export default connect(mapStateToProps)(UploadPost);

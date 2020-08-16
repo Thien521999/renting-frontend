@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 class SigninForm extends Component {
   render() {
     return (
-      <div className="card text-left  mt-50">
+      <div className="card text-left">
         <Formik
           initialValues={{ email: '', password: '' }}
           onSubmit={data => {

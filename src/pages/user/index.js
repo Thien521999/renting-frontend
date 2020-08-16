@@ -19,7 +19,7 @@ class User extends Component {
       }
       // console.log(data);
       main = (
-        <div>
+        <div className="userPage">
           <div className="container mt-20">
             <div className="row">
               <div className="col-2" />

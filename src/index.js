@@ -27,6 +27,8 @@ import UploadPost from './pages/upload-post';
 import NotFound from './pages/notfound';
 import PrivateRouter from './components/privateRoute';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 ReactDOM.render(
   <Router>
     <React.StrictMode>
@@ -40,7 +42,7 @@ ReactDOM.render(
           <Route path="/logup" component={Signup} />
           <Route path="/forget_password" component={ForgetPassword} />
           <PrivateRouter path="/change_password" component={ChangePassword} />
-          <Route path="/detail/:id" component={Detail} />
+          <Route path="/detail/id=:id" component={Detail} />
           <PrivateRouter path="/user" component={User} />
           <Route path="/admin" component={Admin} />
           <PrivateRouter path="/upload_post" component={UploadPost} />

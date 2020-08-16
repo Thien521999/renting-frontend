@@ -5,7 +5,8 @@ const UploadPostSlice = createSlice({
   initialState: {
     loading: false,
     dataimage: [],
-    status: undefined
+    status: undefined,
+    data: undefined
   },
   reducers: {
     fetch_request: (state, action) => ({
@@ -15,8 +16,8 @@ const UploadPostSlice = createSlice({
 
     fetch_success: (state, action) => {
       const { data, status } = action.payload;
-      console.log('upload thành công');
-      console.log(action.payload);
+      // console.log('upload thành công');
+      // console.log(action.payload);
       state.data = data;
       state.status = status;
       state.loading = false;
