@@ -19,7 +19,7 @@ class UploadPost extends Component {
       if (images === undefined || editor === undefined || infor === undefined) {
         alert('nhập đầy đủ thông tin');
       } else {
-        this.props.dispatch(services(infor.name, editor, infor.price, infor.address, infor.area, infor.water, infor.electric, this.props.iduser, images));
+        this.props.dispatch(services(infor.name, editor, infor.price, infor.address, infor.area, infor.water, infor.electric, this.props.user.data.id, images));
       }
       // const informationRoom = {
       //   name: infor.name,
@@ -57,19 +57,20 @@ class UploadPost extends Component {
             </div>
             <div className="row mt-5">
               <div className="col-4">
-                <button onClick={this.uploadPost} name="" id="" className="btn btn-primary" type="button" value="">Đăng bài</button>
+                <button onClick={this.uploadPost} name="" id="btnPost" className="btn btn-primary" type="button" value="">Đăng bài</button>
               </div>
             </div>
             <div />
           </div>
         </div>
       );
-      if (this.props.role === 0) { component = <Redirect push to="/notfound" />; }
+      if (this.props.user.data.role === 0) { component = <Redirect push to="/notfound" />; }
       if (this.props.upload.status === 201) {
         // const { id } = this.props.upload.data;
         alert('đăng bài thành công');
         // component = <Redirect push to={`/detail/id=${id}`} />;
       }
+      if (this.props.user.status !== 200) { component = <Redirect push to="/home" />; }
 
       return (
         <div>
@@ -83,9 +84,8 @@ const mapStateToProps = state => ({
   listImage: state.uploadimage.dataimage,
   EditorState: state.edtState.editorState,
   infor: state.inforRenting,
-  iduser: state.user.data.id,
-  role: state.user.data.role,
+  user: state.user,
   loading: state.uploadpost.loading,
-  upload: state.uploadpost
+  upload: state.uploadpost,
 });
 export default connect(mapStateToProps)(UploadPost);
