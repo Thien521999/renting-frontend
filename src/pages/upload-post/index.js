@@ -14,22 +14,29 @@ class UploadPost extends Component {
       const images = this.props.listImage;
       const editor = this.props.EditorState;
       const infor = this.props.infor.data;
-      const informationRoom = {
-        name: infor.name,
-        description: editor,
-        price: infor.price,
-        address: infor.address,
-        area: infor.area,
-        water: infor.water,
-        electric: infor.electric,
-        owner: this.props.iduser,
-        images
-      };
-      console.log(informationRoom);
-      this.props.dispatch(services(infor.name, editor, infor.price, infor.address, infor.area, infor.water, infor.electric, this.props.iduser, images));
+      // console.log(images)
+      // console.log(images)
+      if (images === undefined || editor === undefined || infor === undefined) {
+        alert('nhập đầy đủ thông tin');
+      } else {
+        this.props.dispatch(services(infor.name, editor, infor.price, infor.address, infor.area, infor.water, infor.electric, this.props.iduser, images));
+      }
+      // const informationRoom = {
+      //   name: infor.name,
+      //   description: editor,
+      //   price: infor.price,
+      //   address: infor.address,
+      //   area: infor.area,
+      //   water: infor.water,
+      //   electric: infor.electric,
+      //   owner: this.props.iduser,
+      //   images
+      // };
+      // console.log(informationRoom);
     }
 
     render() {
+      console.log(this.props.infor.data);
       let component = (
         <div className="EditorText">
           <div className="container">
@@ -57,10 +64,11 @@ class UploadPost extends Component {
           </div>
         </div>
       );
-      if (this.props.role !== 1) { component = <Redirect push to="/notfound" />; }
+      if (this.props.role === 0) { component = <Redirect push to="/notfound" />; }
       if (this.props.upload.status === 201) {
-        const { id } = this.props.upload.data;
-        component = <Redirect push to={`/detail/id=${id}`} />;
+        // const { id } = this.props.upload.data;
+        alert('đăng bài thành công');
+        // component = <Redirect push to={`/detail/id=${id}`} />;
       }
 
       return (

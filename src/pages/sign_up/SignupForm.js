@@ -24,6 +24,8 @@ class SignupForm extends Component {
             password: Yup.string()
               .min(6, 'password more than 6 character')
               .required('required'),
+            retype: Yup.string()
+              .required('requied')
           })}
 
         >

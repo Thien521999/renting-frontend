@@ -2,6 +2,9 @@ import './post.sass';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { BsFillLightningFill, BsFillDropletFill } from 'react-icons/bs';
+import { FaBtc, FaLinkedinIn } from 'react-icons/fa';
+
 import services from './service/sv_post';
 
 class Post extends React.Component {
@@ -11,12 +14,12 @@ class Post extends React.Component {
     dispatch(services(id));
   }
 
-  componentDidMount = () => {
-    const { data } = this.props;
-    const id = String(data.id);
-    const element = document.getElementById(id);
-    element.innerHTML = this.props.data.description;
-  }
+  // componentDidMount = () => {
+  //   const { data } = this.props;
+  //   const id = String(data.id);
+  //   const element = document.getElementById(id);
+  //   // element.innerHTML = this.props.data.description;
+  // }
 
   render() {
     const { data } = this.props;
@@ -45,8 +48,32 @@ class Post extends React.Component {
           <div className="row align-items-start">
             <div className="col-md-5">
               <div className="card-block">
-                <h4 className="card-title">{data.name}</h4>
-                <div className="card-text card-description" id={data.id}> </div>
+                <h4 className="card-title"><b>{data.name}</b></h4>
+                <div className="card-text card-description" id={data.id}>
+                  <div className="mt-2">
+                    <FaLinkedinIn />
+                    {':   '}
+                    {data.address}
+                  </div>
+                  <div className="mt-2">
+                    <FaBtc />
+                    {':   '}
+                    {data.price}
+                    vnđ
+                  </div>
+                  <div className="mt-2">
+                    <BsFillLightningFill />
+                    {':   '}
+                    {data.electric}
+                    vnđ
+                  </div>
+                  <div className="mt-2">
+                    <BsFillDropletFill />
+                    {':   '}
+                    {data.water}
+                    vnđ
+                  </div>
+                </div>
                 <br />
                 <Link to={`/detail/id=${data.id}`} className="mt-auto btn btn-primary">Read more</Link>
               </div>

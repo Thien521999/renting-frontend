@@ -62,7 +62,7 @@ class Navigationbar extends Component {
       return (
         <div id="Navigation">
           <nav className="navbar navbar-expand-lg navbar-dark bg-primary navigation">
-            <Link className="navbar-brand" to="/">Trang chủ</Link>
+            <Link className="navbar-brand" to="/">TRANG CHỦ</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon" />
             </button>
@@ -70,19 +70,19 @@ class Navigationbar extends Component {
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
                   <Link className="nav-link" to="#">
-                    Thuê chung cư
+                    CHUNG CƯ
                     {' '}
                     <span className="sr-only">(current)</span>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="#">Thuê nhà trọ</Link>
+                  <Link className="nav-link" to="#">NHÀ TRỌ</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="#">Thuê nhà riêng</Link>
+                  <Link className="nav-link" to="#">NHÀ RIÊNG</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/user">Thông tin</Link>
+                  <Link className="nav-link" to="/user">THÔNG TIN</Link>
                 </li>
               </ul>
               <form className="form-inline">

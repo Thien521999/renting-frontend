@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import SignupForm from './SignupForm';
 import services from './services/sv_signup';
+import Loading from '../../components/loading';
 
 class Signup extends Component {
     signUp=(name, phone, email, password, retype, role) => {
@@ -34,6 +35,7 @@ class Signup extends Component {
       }
       return (
         <div>
+          {this.props.user.loading ? <Loading /> : <div />}
           {compo}
         </div>
       );
