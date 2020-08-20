@@ -5,13 +5,40 @@ import { Redirect } from 'react-router';
 import InforRengting from '../../components/inforrenting';
 import EditorConvertToHTML from '../../components/edittor';
 import UploadImage from '../../components/uploadimage';
-import SlideImage from '../../components/slideimage';
+// import SlideImage from '../../components/slideimage';
 import services from './services/upload_post';
 import Loading from '../../components/loading';
+import ListImage from '../../components/listimage';
 
 class UploadPost extends Component {
+    callAPI=async fileupload => {
+      const data = new FormData();
+      // const url = new URL(fileupload);
+      // const file = url.toJSON();
+      // console.log(file);
+      // const file = new File(fileupload);
+      data.append('file', fileupload);
+      data.append('upload_preset', 'uploaddemo');
+      const res = await fetch(
+        'https://api.cloudinary.com/v1_1/kh-ng/image/upload',
+        {
+          method: 'POST',
+          body: data
+        }
+      );
+      const f = await res.json();
+      return f.secure_url;
+    }
+
     uploadPost = () => {
       const images = this.props.listImage;
+      // const images = [];
+      // const dataimage = this.props.listImage;
+      // for (let i = 0; i < dataimage.length; i++) {
+      //   const img = this.callAPI(dataimage[i]);
+      //   // console.log(file);
+      //   images.push(img);
+      // }
       const editor = this.props.EditorState;
       const infor = this.props.infor.data;
       // console.log(images)
@@ -36,7 +63,7 @@ class UploadPost extends Component {
     }
 
     render() {
-      console.log(this.props.infor.data);
+      // console.log(this.props.infor.data);
       let component = (
         <div className="EditorText">
           <div className="container">
@@ -46,7 +73,8 @@ class UploadPost extends Component {
               </div>
               <div className="col-7">
                 <UploadImage />
-                <SlideImage Images={this.props.listImage} />
+                {/* <SlideImage Images={this.props.listImage} /> */}
+                <ListImage data={this.props.listImage} />
               </div>
               <div />
             </div>
@@ -87,5 +115,6 @@ const mapStateToProps = state => ({
   user: state.user,
   loading: state.uploadpost.loading,
   upload: state.uploadpost,
+  dataImage: state.uploadimage.data
 });
 export default connect(mapStateToProps)(UploadPost);

@@ -6,8 +6,8 @@ export default (email, password) => function (dispatch) {
   console.log(email);
   console.log(password);
   axios.post('http://localhost:5000/user/get', {
-    'email': email,
-    'password': password
+    email,
+    password
   })
     .then(res => {
       // console.log(res.data)

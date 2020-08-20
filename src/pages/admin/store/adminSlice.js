@@ -1,53 +1,57 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const adminSlice = createSlice({
-    name: 'admin',
-    initialState: {
-        loading: false,
-        dp_dt_user:false,
-        dp_dt_request:false,
-        datausers: [],
-        requestupgrade:[],
-        status: undefined
+  name: 'admin',
+  initialState: {
+    loading: false,
+    dp_dt_user: false,
+    dp_dt_request: false,
+    datausers: [],
+    userupgrade: [],
+    status: undefined
+  },
+  reducers: {
+    fetchRequest: (state, action) => ({
+      ...state,
+      loading: true
+    }),
+
+    fetchSuccess: (state, action) => {
+      const { data, status } = action.payload;
+
+      console.log('gọi service admin');
+      state.datausers = data;
+      state.status = status;
+      state.loading = false;
     },
-    reducers: {
-        fetch_request: (state, action) => {
-            return {
-                ...state,
-                loading: true
-            }
-        },
+    fetchGetRequestSC: (state, action) => {
+      const { data, status } = action.payload;
+      state.userupgrade = data;
+      state.status = status;
+      state.loading = false;
+    },
 
-        fetch_success: (state, action) => {
-            let { data, status } = action.payload;
-            
-            console.log(action.payload);
-            state.data = data;
-            state.status = status;
-            state.loading = false;
-        },
+    fetchError: (state, action) => ({
+      ...state,
+      loading: false,
+      status: action.payload
+    }),
 
-        fetch_error: (state, action) => {
-            return {
-                ...state,
-                loading: false,
-                status: action.payload
-            }
-        },
-        
-        fetch_displayusers:(state,action)=>{    
-            //console.log("đã đến đay chưa")
-            state.dp_dt_user=true;
-            state.dp_dt_request=false;
-        },
-        fetch_displayrequest:(state,action)=>
-        {
-            state.dp_dt_user=false;
-            state.dp_dt_request=true;
-        }
-    }
-})
+    Displayusers: (state, action) => ({
+      ...state,
+      dp_dt_user: true,
+      dp_dt_request: false
+    }),
+    Displayrequest: (state, action) => ({
+      ...state,
+      dp_dt_user: false,
+      dp_dt_request: true
+    })
+  }
+});
 
-export const { fetch_error, fetch_request, fetch_success, fetch_displayusers,fetch_displayrequest } = adminSlice.actions;
+export const {
+  fetchError, fetchRequest, fetchSuccess, Displayusers, Displayrequest, fetchGetRequestSC
+} = adminSlice.actions;
 
 export default adminSlice.reducer;

@@ -54,7 +54,7 @@ class User extends Component {
                   </div>
                   <div className="user gr-btn">
                     <Link to="#" type="button" className="btn btn-outline-primary">Phòng trọ</Link>
-                    <Link to="#" type="button" className="btn btn-outline-primary">Nân cấp TK</Link>
+                    <Link to="#" type="button" className="btn btn-outline-primary">Nâng cấp TK</Link>
                     <Link to="/change_password" type="button" className="btn btn-outline-primary">Đổi mật khẩu</Link>
                     {checkpost ? <Link to="upload_post" type="button" className="btn btn-outline-primary">Đăng bài</Link> : <div />}
                   </div>

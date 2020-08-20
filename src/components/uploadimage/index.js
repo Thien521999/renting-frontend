@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetch_addImage } from './store/uploadImageSlice';
+import { fetch_addImage, addDataImage } from './store/uploadImageSlice';
 // import SlideImage from '../slideimage'
 
 class UploadImage extends Component {
     addImg=image => {
       console.log('đến chổ thêm image');
-      this.props.addImage(image);
+      this.props.dispatch(fetch_addImage(image));
+    }
+
+    addDataImg=data => {
+      this.props.dispatch(addDataImage(data));
     }
 
     UploadImage=async e => {
@@ -23,9 +27,14 @@ class UploadImage extends Component {
         }
       );
       const file = await res.json();
+      console.log(file);
       const linkimg = file.secure_url;
-
+      // const linkimg = URL.createObjectURL(files[0]);
+      //  console.log(typeof (files[0]));
+      // console.log(files[0]);
       this.addImg(linkimg);
+      // this.addDataImg(files[0]);
+      document.getElementById('file').value = null;
     }
 
     render() {
@@ -33,7 +42,7 @@ class UploadImage extends Component {
         <div>
           <input
             name="file"
-            id=""
+            id="file"
             className="btn btn-primary"
             type="file"
             onChange={this.UploadImage}
@@ -46,9 +55,9 @@ const mapStateToProps = state => ({
   images: state.uploadimage.dataimage
 });
 
-const mapDispatchToState = dispatch => ({
-  addImage: image => {
-    dispatch(fetch_addImage(image));
-  }
-});
-export default connect(mapStateToProps, mapDispatchToState)(UploadImage);
+// const mapDispatchToState = dispatch => ({
+//   addImage: image => {
+//     dispatch(fetch_addImage(image));
+//   }
+// });
+export default connect(mapStateToProps)(UploadImage);

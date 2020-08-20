@@ -4,9 +4,8 @@ const UploadPostSlice = createSlice({
   name: 'uploadpost',
   initialState: {
     loading: false,
-    dataimage: [],
     status: undefined,
-    data: undefined
+    data: undefined,
   },
   reducers: {
     fetch_request: (state, action) => ({
