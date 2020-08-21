@@ -4,8 +4,20 @@ import './user.sass';
 import { connect } from 'react-redux';
 import { AiFillMail, AiFillPhone } from 'react-icons/ai';
 import { FiUsers } from 'react-icons/fi';
+import upgrate from '../../components/requestupgrade/services/upgrade';
 
 class User extends Component {
+  upgradeUser=() => {
+    const { user } = this.props;
+    const { data } = user;
+    const dataUpgrade = {
+      ...data,
+      role: 3
+    };
+    this.props.dispatch(upgrate(dataUpgrade));
+    alert('đã gửi yêu cầu nâng cấp tài khoản');
+  }
+
   render() {
     const { data } = this.props.user;
     const { status } = this.props.user;
@@ -50,13 +62,14 @@ class User extends Component {
                         <span>{data.phone}</span>
                       </div>
                       <div>
-                        <Link className="btn btn-primary" to="/change_password" type="submit">Đổi mật khẩu</Link>
+                        {/* <Link className="btn btn-primary" to="/change_password" type="submit">Đổi mật khẩu</Link> */}
+                        {!checkpost ? <button onClick={this.upgradeUser} className="btn btn-primary" to="/change_password" type="submit">nâng cấp tài khoản</button> : null}
                       </div>
                     </div>
                   </div>
                   <div className="user gr-btn">
-                    <Link to="#" type="button" className="btn btn-outline-primary">Phòng trọ</Link>
-                    <Link to="#" type="button" className="btn btn-outline-primary">Nâng cấp TK</Link>
+                    {checkpost ? <Link to="#" type="button" className="btn btn-outline-primary">Phòng trọ</Link> : null}
+                    {!checkpost ? <Link to="#" type="button" className="btn btn-outline-primary">Nâng cấp TK</Link> : null}
                     <Link to="/change_password" type="button" className="btn btn-outline-primary">Đổi mật khẩu</Link>
                     {checkpost ? <Link to="upload_post" type="button" className="btn btn-outline-primary">Đăng bài</Link> : <div />}
                   </div>

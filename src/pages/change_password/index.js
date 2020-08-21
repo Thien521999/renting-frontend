@@ -15,7 +15,7 @@ class ChangePassword extends Component {
     }
 
     render() {
-      const compo = null;
+      const component = null;
       if (this.props.check === 200) {
         alert('đổi mật khẩu thành công');
         this.props.dispatch(fetch_exit());
@@ -27,7 +27,8 @@ class ChangePassword extends Component {
         <div className="container mt-5 widthform">
           <div className="row">
             <ChangepassForm ChangePassword={this.changePass} />
-            {compo}
+            {component}
+            {this.props.check === 400 ? <div className="errormess">* sai mật khẩu</div> : null}
           </div>
         </div>
       );

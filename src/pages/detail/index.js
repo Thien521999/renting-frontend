@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { BsFillStarFill } from 'react-icons/bs';
 import Table from './Table';
 import services from './services/sv-detail';
+import votepost from './services/votepost';
 
 class Detail extends Component {
   componentDidUpdate = () => {
@@ -11,9 +12,40 @@ class Detail extends Component {
     a.innerHTML = this.props.detail.data.description;
   }
 
+  // componentDidMount=()=>{
+  //   if()
+  // }
+
   componentWillMount=() => {
     const { id } = this.props.match.params;
     this.props.dispatch(services(id));
+  }
+
+  vote=() => {
+    const { id } = this.props.user.data;
+    if (id === undefined) {
+      alert('bạn chưa đăng nhập hệ thống');
+    } else {
+      let data;
+      data = this.props.detail.data;
+      const votes = [];
+      data.vote.map(vote => votes.push(vote));
+      // let votee=votes
+      console.log(votes);
+      const index = votes.indexOf(id);
+      if (index !== -1) {
+        votes.splice(index, 1);
+        console.log(votes);
+      } else {
+        console.log(votes);
+        votes.push(id);
+      }
+      const dataupdate = {
+        ...data,
+        vote: votes,
+      };
+      this.props.dispatch(votepost(dataupdate));
+    }
   }
 
   render() {
@@ -23,6 +55,14 @@ class Detail extends Component {
     let slide = <div>Không có dữ liệu</div>;
 
     if (status === 200) {
+      const { id } = this.props.user.data;
+      const { vote } = this.props.detail.data;
+      let voted;
+      if (vote.indexOf(id) !== -1) {
+        voted = true;
+      } else {
+        voted = false;
+      }
       const infor = this.props.detail.data;
       const { images } = infor;
 
@@ -90,6 +130,11 @@ class Detail extends Component {
             </div>
           </div>
 
+          <div className="point-evaluate">
+            {voted ? <BsFillStarFill onClick={this.vote} id="start-voted" /> : <BsFillStarFill onClick={this.vote} id="start-notvote" />}
+            {' '}
+            <span className="point">{infor.vote.length}</span>
+          </div>
         </div>
       );
     } else {
@@ -98,16 +143,14 @@ class Detail extends Component {
     return (
       <div className="detailPage">
         {component}
-        <div className="point-evaluate">
-          <BsFillStarFill />
-          <span className="point">100</span>
-        </div>
+
       </div>
     );
   }
 }
 const mapStateToProps = state => ({
   detail: state.detail,
+  user: state.user
 });
 
 export default connect(mapStateToProps)(Detail);
