@@ -20,16 +20,17 @@ class SignupForm extends Component {
           validationSchema={Yup.object({
             email: Yup.string()
               .email('Invalid email address')
-              .required('required'),
+              .required(),
             password: Yup.string()
               .min(6, 'password more than 6 character')
-              .required('required'),
+              .required(),
             retype: Yup.string()
-              .required('required'),
+              .required()
+              .oneOf([Yup.ref('password'), null], 'Mismatch with password.'),
             phone: Yup.string()
-              .required('required'),
+              .required(),
             name: Yup.string()
-              .required('required')
+              .required()
           })}
 
         >

@@ -6,6 +6,7 @@ import ManageUser from '../../components/mana_user';
 import RequestUpgrade from '../../components/requestupgrade';
 import getAllUser from './services/getalluser';
 import getRequest from './services/getRequestUpgrate';
+import { Redirect } from 'react-router';
 
 class Admin extends Component {
   componentWillMount=() => {
@@ -22,6 +23,10 @@ class Admin extends Component {
     if (this.props.dataAdmin.dp_dt_request) {
       compo = <RequestUpgrade data={this.props.dataAdmin.userupgrade} />;
     }
+
+    if (this.props.checkadmin !== 2) {
+      compo = <Redirect push to="/notfound" />;
+    }
     return (
       <div className="pageAdmin">
         <div>
@@ -35,6 +40,7 @@ class Admin extends Component {
   }
 }
 const mapStateToProps = state => ({
-  dataAdmin: state.admin
+  dataAdmin: state.admin,
+  checkadmin: state.user.data.role
 });
 export default connect(mapStateToProps)(Admin);

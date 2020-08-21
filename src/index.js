@@ -29,6 +29,7 @@ import PrivateRouter from './components/privateRoute';
 
 import 'react-toastify/dist/ReactToastify.css';
 import Search from './pages/search';
+import UpdatePost from './pages/updatepost';
 
 ReactDOM.render(
   <Router>
@@ -47,7 +48,8 @@ ReactDOM.render(
           <PrivateRouter path="/user" component={User} />
           <Route path="/admin" component={Admin} />
           <PrivateRouter path="/upload_post" component={UploadPost} />
-          <Route path="/search/keyword=:keyword" component={Search} />
+          <PrivateRouter path="/update_post" component={UpdatePost} />
+          <Route path="/search?keyword=:keyword" component={Search} />
           <Route component={NotFound} />
         </Switch>
         <footer>

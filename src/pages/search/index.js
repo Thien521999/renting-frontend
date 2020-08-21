@@ -7,10 +7,11 @@ import getdatasearch from './services/getdatasearch';
 import Loading from '../../components/loading';
 
 class Search extends React.Component {
-  // componentDidMount =() => {
-  //   const { keyword } = this.props.match.params;
-  //   this.props.dispatch(getdatasearch(keyword));
-  // }
+  componentDidMount =() => {
+    const keyword = this.props.location.query;
+    console.log(keyword);
+    this.props.dispatch(getdatasearch(keyword));
+  }
 
   // componentWillUpdate=() => {
   //   const { keyword } = this.props.match.params;
@@ -20,13 +21,18 @@ class Search extends React.Component {
   render() {
     // this.props.ResetDetail();
     const { data } = this.props;
-    const component = data.map((any, index) => <Post key={index} data={any} />);
+    let component;
+    if (data.length > 0) {
+      component = data.map((any, index) => <Post key={index} data={any} />);
+    } else {
+      component = <div className="notfound">không tìm thấy kết quả nào</div>;
+    }
+
     return (
       <div className="HomePage">
         {this.props.loading ? <Loading /> : <div />}
         {component}
       </div>
-
     );
   }
 }

@@ -98,10 +98,10 @@ class Navigationbar extends Component {
               </ul>
               <div className="form-inline">
                 <input className="form-control mr-sm-2" onChange={this.changekey} type="search" placeholder="Search" aria-label="Search" />
-                <Link className="btn btn-outline-light my-2 my-sm-0 mr-5" type="submit" onClick={() => this.search(this.props.keyword)} to={`/search/keyword=${this.props.keyword}`}>Search</Link>
+                <Link className="btn btn-outline-light my-2 my-sm-0 mr-5" type="submit" onClick={() => this.search(this.props.keyword)} to={{ pathname: `/search?keyword=${this.props.keyword}`, query: this.props.keyword }}>Search</Link>
               </div>
               {compo}
-
+              {/* <Redirect push to="/user" /> */}
             </div>
           </nav>
           {menu}
@@ -113,7 +113,8 @@ class Navigationbar extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  keyword: state.search.keyword
+  keyword: state.search.keyword,
+  search: state.search.data
 });
 
 const mapDispatchToProps = dispatch => ({

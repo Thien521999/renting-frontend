@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './detail.sass';
 import { connect } from 'react-redux';
+import { BsFillStarFill } from 'react-icons/bs';
 import Table from './Table';
 import services from './services/sv-detail';
 
@@ -20,6 +21,7 @@ class Detail extends Component {
     const { status } = this.props.detail;
     let component;
     let slide = <div>Không có dữ liệu</div>;
+
     if (status === 200) {
       const infor = this.props.detail.data;
       const { images } = infor;
@@ -96,6 +98,10 @@ class Detail extends Component {
     return (
       <div className="detailPage">
         {component}
+        <div className="point-evaluate">
+          <BsFillStarFill />
+          <span className="point">100</span>
+        </div>
       </div>
     );
   }

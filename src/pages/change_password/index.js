@@ -1,34 +1,41 @@
 import React, { Component } from 'react';
 import ChangepassForm from './ChangepassForm';
-import './changepass.sass'
+import './changepass.sass';
 import { connect } from 'react-redux';
-import services from './services/sv-changePass'
+import services from './services/sv-changePass';
+import { fetch_exit } from '../sign_in/store/signInSlice';
+import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 
 class ChangePassword extends Component {
-    changePass=(oldPass,newPass)=>
-    {
-        let user=this.props.user;
-        console.log(user.data.email)
-        this.props.dispatch(services(user.data.email,oldPass,newPass));
-        
+    changePass=(oldPass, newPass) => {
+      const { user } = this.props;
+      console.log(user.data.email);
+      this.props.dispatch(services(user.data.email, oldPass, newPass));
     }
+
     render() {
-        return (
-            <div className="container mt-5 widthform">
-                <div className="row">
-                    <ChangepassForm ChangePassword={this.changePass}></ChangepassForm>
-                    
-                </div>
-            </div>
-        );
+      const compo = null;
+      if (this.props.check === 200) {
+        alert('đổi mật khẩu thành công');
+        this.props.dispatch(fetch_exit());
+        return <Redirect push to="/login" />;
+      }
+      // console.log(this.props.check);
+
+      return (
+        <div className="container mt-5 widthform">
+          <div className="row">
+            <ChangepassForm ChangePassword={this.changePass} />
+            {compo}
+          </div>
+        </div>
+      );
     }
 }
 
-const MapStateToProps=state=>
-    {
-        return{
-            user:state.user,
-            check: state.changePass
-        }
-    }
-export default connect(MapStateToProps) (ChangePassword);
+const MapStateToProps = state => ({
+  user: state.user,
+  check: state.changePass.status
+});
+export default connect(MapStateToProps)(ChangePassword);
