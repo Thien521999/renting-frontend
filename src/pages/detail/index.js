@@ -94,7 +94,7 @@ class Detail extends Component {
       component = <div>loading</div>;
     }
     return (
-      <div>
+      <div className="detailPage">
         {component}
       </div>
     );

@@ -9,6 +9,7 @@ import uploadImageReducer from './components/uploadimage/store/uploadImageSlice'
 import adminReducer from './pages/admin/store/adminSlice';
 import homeReducer from './pages/home/store/homeSlice';
 import detailReducer from './pages/detail/store/detailSlice';
+import searchReducer from './pages/search/store/searchSlice';
 
 export default configureStore({
   reducer: {
@@ -21,6 +22,7 @@ export default configureStore({
     uploadimage: uploadImageReducer,
     admin: adminReducer,
     home: homeReducer,
-    detail: detailReducer
+    detail: detailReducer,
+    search: searchReducer
   }
 });

@@ -16,6 +16,8 @@ class User extends Component {
       if (data.role === 0) {
         role = 'Người dùng';
         checkpost = false;
+      } else if (data.role === 1) {
+        role = 'chủ trọ';
       }
       // console.log(data);
       main = (

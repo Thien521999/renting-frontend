@@ -3,11 +3,22 @@ import 'bootstrap';
 import './navigationbar.sass';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { changeKey } from '../../pages/search/store/searchSlice';
+import getdatasearch from '../../pages/search/services/getdatasearch';
 import { fetch_exit, fetch_displayMenu } from '../../pages/sign_in/store/signInSlice';
 import Menu from './Menu';
 
 class Navigationbar extends Component {
+    changekey=e => {
+      const keyword = e.target.value;
+      // console.log(keyword);
+      this.props.changeKey(keyword);
+    }
+
+    search=keyword => {
+      this.props.search(keyword);
+    }
+
     logout = () => {
       this.props.exit();
     }
@@ -85,10 +96,10 @@ class Navigationbar extends Component {
                   <Link className="nav-link" to="/user">THÔNG TIN</Link>
                 </li>
               </ul>
-              <form className="form-inline">
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                <button className="btn btn-outline-light my-2 my-sm-0 mr-5" type="submit">Search</button>
-              </form>
+              <div className="form-inline">
+                <input className="form-control mr-sm-2" onChange={this.changekey} type="search" placeholder="Search" aria-label="Search" />
+                <Link className="btn btn-outline-light my-2 my-sm-0 mr-5" type="submit" onClick={() => this.search(this.props.keyword)} to={`/search/keyword=${this.props.keyword}`}>Search</Link>
+              </div>
               {compo}
 
             </div>
@@ -101,7 +112,8 @@ class Navigationbar extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  keyword: state.search.keyword
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -110,6 +122,12 @@ const mapDispatchToProps = dispatch => ({
   },
   setDisPlayMenu: () => {
     dispatch(fetch_displayMenu());
+  },
+  changeKey: key => {
+    dispatch(changeKey(key));
+  },
+  search: keyword => {
+    dispatch(getdatasearch(keyword));
   }
 });
 
