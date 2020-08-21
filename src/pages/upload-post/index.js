@@ -9,6 +9,7 @@ import UploadImage from '../../components/uploadimage';
 import services from './services/upload_post';
 import Loading from '../../components/loading';
 import ListImage from '../../components/listimage';
+import { fetch_reset } from './store/uploadSlice';
 
 class UploadPost extends Component {
     callAPI=async fileupload => {
@@ -39,27 +40,34 @@ class UploadPost extends Component {
       //   // console.log(file);
       //   images.push(img);
       // }
+      const name = document.getElementById('namepost').value;
+      const address = document.getElementById('addresspost').value;
+      const price = document.getElementById('pricepost').value;
+      const area = document.getElementById('areapost').value;
+      const water = document.getElementById('waterpost').value;
+      const electric = document.getElementById('electricpost').value;
+      // console.log(name);
       const editor = this.props.EditorState;
-      const infor = this.props.infor.data;
+      // const infor = this.props.infor.data;
       // console.log(images)
       // console.log(images)
-      if (images === undefined || editor === undefined || infor === undefined) {
+      const informationRoom = {
+        name,
+        description: editor,
+        price,
+        address,
+        area,
+        water,
+        electric,
+        owner: this.props.user.data.id,
+        images
+      };
+      console.log(informationRoom);
+      if (images === undefined || editor === undefined) {
         alert('nhập đầy đủ thông tin');
       } else {
-        this.props.dispatch(services(infor.name, editor, infor.price, infor.address, infor.area, infor.water, infor.electric, this.props.user.data.id, images));
+        this.props.dispatch(services(informationRoom));
       }
-      // const informationRoom = {
-      //   name: infor.name,
-      //   description: editor,
-      //   price: infor.price,
-      //   address: infor.address,
-      //   area: infor.area,
-      //   water: infor.water,
-      //   electric: infor.electric,
-      //   owner: this.props.iduser,
-      //   images
-      // };
-      // console.log(informationRoom);
     }
 
     render() {
@@ -97,6 +105,7 @@ class UploadPost extends Component {
         // const { id } = this.props.upload.data;
         alert('đăng bài thành công');
         // component = <Redirect push to={`/detail/id=${id}`} />;
+        this.props.dispatch(fetch_reset());
       }
       if (this.props.user.status !== 200) { component = <Redirect push to="/home" />; }
 

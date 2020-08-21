@@ -48,7 +48,7 @@ ReactDOM.render(
           <PrivateRouter path="/user" component={User} />
           <Route path="/admin" component={Admin} />
           <PrivateRouter path="/upload_post" component={UploadPost} />
-          <PrivateRouter path="/update_post" component={UpdatePost} />
+          <PrivateRouter path="/update_post/id=:id" component={UpdatePost} />
           <Route path="/search?keyword=:keyword" component={Search} />
           <Route component={NotFound} />
         </Switch>

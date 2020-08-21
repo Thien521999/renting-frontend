@@ -49,7 +49,7 @@ class InforRengting extends Component {
                     <div className="row mt-2">
                       <div className="col-12">
                         <div>Tên</div>
-                        <Field name="name" className="form-control" placeholder="Tên tiêu đề" />
+                        <Field name="name" id="namepost" className="form-control" placeholder="Tên tiêu đề" />
                         {errors.name && touched.name ? (
                           <div className="errormess">
                             *
@@ -57,7 +57,7 @@ class InforRengting extends Component {
                           </div>
                         ) : null}
                         <div className=" mt-2">Địa chỉ</div>
-                        <Field name="address" className="form-control" placeholder="Địa chỉ" />
+                        <Field name="address" id="addresspost" className="form-control" placeholder="Địa chỉ" />
                         {errors.address && touched.address ? (
                           <div className="errormess">
                             *
@@ -65,7 +65,7 @@ class InforRengting extends Component {
                           </div>
                         ) : null}
                         <div className="mt-3">Giá thuê</div>
-                        <Field name="price" type="number" className="form-control" placeholder="Giá thuê" />
+                        <Field name="price" id="pricepost" type="number" className="form-control" placeholder="Giá thuê" />
                         {errors.price && touched.price ? (
                           <div className="errormess">
                             *
@@ -73,7 +73,7 @@ class InforRengting extends Component {
                           </div>
                         ) : null}
                         <div className="mt-3">Diện tích</div>
-                        <Field name="area" type="number" className="form-control" placeholder="Diện tích" />
+                        <Field name="area" id="areapost" type="number" className="form-control" placeholder="Diện tích" />
                         {errors.area && touched.area ? (
                           <div className="errormess">
                             *
@@ -85,7 +85,7 @@ class InforRengting extends Component {
                     <div className="row">
                       <div className="col-12">
                         <div className="mt-3">Giá nước </div>
-                        <Field name="water" type="number" className="form-control" placeholder="Giá nước" />
+                        <Field name="water" id="waterpost" type="number" className="form-control" placeholder="Giá nước" />
                         {errors.water && touched.water ? (
                           <div className="errormess">
                             *
@@ -93,7 +93,7 @@ class InforRengting extends Component {
                           </div>
                         ) : null}
                         <div className="mt-3">Giá điện</div>
-                        <Field name="electric" type="number" className="form-control" placeholder="Giá điện" />
+                        <Field name="electric" id="electricpost" type="number" className="form-control" placeholder="Giá điện" />
                         {errors.electric && touched.electric ? (
                           <div className="errormess">
                             *
@@ -107,7 +107,7 @@ class InforRengting extends Component {
                     <div className="row mt-4 mb-4">
                       <div className="col-6" />
                       <div className="col-6">
-                        <button className="btn btn-primary" type="submit">Xác nhận thông tin</button>
+                        {/* <button className="btn btn-primary" type="submit">Xác nhận thông tin</button> */}
                       </div>
                     </div>
                   </div>

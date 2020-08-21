@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 // import { EditorState } from 'draft-js'
 
 const EdtSlice = createSlice({
-  name: 'edtState',
+  name: 'editorupdate',
   initialState: {
     editorState: '',
   },

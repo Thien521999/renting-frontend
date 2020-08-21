@@ -30,19 +30,17 @@ const UploadPostSlice = createSlice({
       //     status: action.payload
       // }
     },
-
-    fetch_addImage: (state, action) => {
-      state.dataimage.push(action.payload);
-    },
     fetch_reset: (state, action) => ({
-      ...state,
-      dataimage: []
+      loading: false,
+      status: undefined,
+      data: undefined,
+
     })
   }
 });
 
 export const {
-  fetch_error, fetch_request, fetch_success, fetch_addImage
+  fetch_error, fetch_request, fetch_success, fetch_addImage, fetch_reset
 } = UploadPostSlice.actions;
 
 export default UploadPostSlice.reducer;

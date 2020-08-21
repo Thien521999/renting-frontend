@@ -6,23 +6,25 @@ import draftToHtml from 'draftjs-to-html';
 // import htmlToDraft from 'html-to-draftjs';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { connect } from 'react-redux';
-import { fetch_editorChange } from './store/edtSlice';
+import { fetch_editorChange } from './store/edittorupdateSlice';
 
-class EditorConvertToHTML extends Component {
+class EditorUpdate extends Component {
     onEditorStateChange = editorState => {
       const a = (String(draftToHtml(convertToRaw(editorState.getCurrentContent()))));
-      document.getElementById('haha').innerHTML = a;
+      document.getElementById('hahah').innerHTML = a;
       this.props.EditorChange(a);
     };
 
     render() {
+      // const paragraph = htmlToDraft((this.props.editorState));
+      // console.log(paragraph);
       return (
         <div>
           <div className="EDIT">
             <Editor
-              initialEditorState={this.props.editorState}
-              // editorState={this.props.editorState}
-              // editorState={this.props.editorState}
+              initialContentState={this.props.editorState}
+              // defaultEditorState={paragraph}
+
               toolbarClassName="toolbarClassName"
               wrapperClassName="wrapperClassName"
               editorClassName="editorClassName"
@@ -31,17 +33,17 @@ class EditorConvertToHTML extends Component {
           </div>
           <div />
 
-          <textarea
+          {/* <textarea
             disabled
             value={this.props.editorState}
-          />
-          <div id="haha" />
+          /> */}
+          <div id="hahah" />
         </div>
       );
     }
 }
 const mapStateToProps = state => ({
-  editorState: state.edtState.editorState
+  editorState: state.editorupdate.editorState
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -49,4 +51,4 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetch_editorChange(editorState));
   }
 });
-export default connect(mapStateToProps, mapDispatchToProps)(EditorConvertToHTML);
+export default connect(mapStateToProps, mapDispatchToProps)(EditorUpdate);

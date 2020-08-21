@@ -10,6 +10,8 @@ import adminReducer from './pages/admin/store/adminSlice';
 import homeReducer from './pages/home/store/homeSlice';
 import detailReducer from './pages/detail/store/detailSlice';
 import searchReducer from './pages/search/store/searchSlice';
+import updatepostReducer from './pages/updatepost/store/updatepostSlice';
+import editorUpdateReducer from './components/editorupdate/store/edittorupdateSlice';
 
 export default configureStore({
   reducer: {
@@ -23,6 +25,8 @@ export default configureStore({
     admin: adminReducer,
     home: homeReducer,
     detail: detailReducer,
-    search: searchReducer
+    search: searchReducer,
+    updatePost: updatepostReducer,
+    editorupdate: editorUpdateReducer
   }
 });
