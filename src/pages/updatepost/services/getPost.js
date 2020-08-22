@@ -8,13 +8,10 @@ export default id => function (dispatch) {
   dispatch(fetchRequest());
   axios.get(`http://localhost:5000/accommodation/${id}`, {
   }).then(res => {
-    console.log('lấy được dữ liệu');
     const { data } = res;
-    console.log(data);
     dispatch(fetchSuccess(data));
   })
     .catch(error => {
-      dispatch(fetchError());
-      console.log(error);
+      dispatch(fetchError(error));
     });
 };

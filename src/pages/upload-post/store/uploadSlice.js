@@ -6,9 +6,10 @@ const UploadPostSlice = createSlice({
     loading: false,
     status: undefined,
     data: undefined,
+    editor: '',
   },
   reducers: {
-    fetch_request: (state, action) => ({
+    fetch_request: state => ({
       ...state,
       loading: true
     }),
@@ -35,12 +36,16 @@ const UploadPostSlice = createSlice({
       status: undefined,
       data: undefined,
 
+    }),
+    setEditor: (state, action) => ({
+      ...state,
+      editor: action.payload
     })
   }
 });
 
 export const {
-  fetch_error, fetch_request, fetch_success, fetch_addImage, fetch_reset
+  fetch_error, fetch_request, fetch_success, fetch_addImage, fetch_reset, setEditor
 } = UploadPostSlice.actions;
 
 export default UploadPostSlice.reducer;

@@ -10,8 +10,8 @@ import Loading from '../../components/loading';
 import ListImage from '../../components/listimage';
 import getPost from './services/getPost';
 import InforUpdate from '../../components/inforupdate';
-import { fetch_editorChange } from '../../components/edittor/store/edtSlice';
-import EditorUpdate from '../../components/editorupdate';
+import Editor from '../../components/edittor';
+import { setEditor } from './store/updatepostSlice';
 
 class UpdatePost extends Component {
   componentWillMount=() => {
@@ -21,24 +21,47 @@ class UpdatePost extends Component {
   }
 
     uploadPost = () => {
-      const images = this.props.listImage;
-      const editor = this.props.EditorState;
-      const infor = this.props.infor.data;
-      if (images === undefined || editor === undefined || infor === undefined) {
-        alert('nhập đầy đủ thông tin');
-      } else {
-        this.props.dispatch(services(infor.name, editor, infor.price, infor.address, infor.area, infor.water, infor.electric, this.props.user.data.id, images));
-      }
+      const { data } = this.props;
+      const { images } = data;
+      const editor = data.description;
+
+      const name = document.getElementById('namepost').value;
+      const address = document.getElementById('addresspost').value;
+      const price = document.getElementById('pricepost').value;
+      const area = document.getElementById('areapost').value;
+      const water = document.getElementById('waterpost').value;
+      const electric = document.getElementById('electricpost').value;
+      // console.log(name);
+      // const infor = this.props.infor.data;
+      // console.log(images)
+      // console.log(images)
+      const informationRoom = {
+        name,
+        description: editor,
+        price,
+        address,
+        area,
+        water,
+        electric,
+        owner: this.props.user.data.id,
+        images
+      };
+
+      console.log(informationRoom);
+      // if (images === undefined || editor === undefined || infor === undefined) {
+      //   alert('nhập đầy đủ thông tin');
+      // } else {
+      //   this.props.dispatch(services(infor.name, editor, infor.price, infor.address, infor.area, infor.water, infor.electric, this.props.user.data.id, images));
+      // }
     }
 
-    componentDidUpdate=() => {
-      // console.log('có gọi hàm này');
-      console.log(this.props.data);
-      this.props.dispatch(fetch_editorChange(this.props.data.description));
+    setEditorData = data => {
+      const { dispatch } = this.props;
+      dispatch(setEditor(data));
     }
 
     render() {
-      console.log(this.props.loading);
+      const { data } = this.props;
       let component;
       if (this.props.loading) {
         component = <Loading />;
@@ -59,7 +82,7 @@ class UpdatePost extends Component {
               </div>
               <div className="row">
                 <div className="col-12">
-                  <EditorUpdate edtState={this.props.EditorState} />
+                  <Editor isUpdate="true" setEditorData={this.setEditorData} data={data.description} />
                 </div>
               </div>
               <div className="row mt-5">
@@ -96,6 +119,5 @@ const mapStateToProps = state => ({
   // dataImage: state.uploadimage.data
   data: state.updatePost.data,
   loading: state.updatePost.loading,
-  EditorState: state.edtState.editorState,
 });
 export default connect(mapStateToProps)(UpdatePost);

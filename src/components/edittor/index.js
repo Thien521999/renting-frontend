@@ -1,52 +1,47 @@
 import React, { Component } from 'react';
-import { convertToRaw } from 'draft-js';
-// import { EditorState } from 'draft-js';
+import { convertToRaw, EditorState, ContentState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
-// import htmlToDraft from 'html-to-draftjs';
+import htmlToDraft from 'html-to-draftjs';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { connect } from 'react-redux';
-import { fetch_editorChange } from './store/edtSlice';
 
 class EditorConvertToHTML extends Component {
-    onEditorStateChange = editorState => {
-      const a = (String(draftToHtml(convertToRaw(editorState.getCurrentContent()))));
-      document.getElementById('haha').innerHTML = a;
-      this.props.EditorChange(a);
-    };
-
-    render() {
-      return (
-        <div>
-          <div className="EDIT">
-            <Editor
-              initialEditorState={this.props.editorState}
-              // editorState={this.props.editorState}
-              // editorState={this.props.editorState}
-              toolbarClassName="toolbarClassName"
-              wrapperClassName="wrapperClassName"
-              editorClassName="editorClassName"
-              onEditorStateChange={this.onEditorStateChange}
-            />
-          </div>
-          <div />
-
-          <textarea
-            disabled
-            value={this.props.editorState}
-          />
-          <div id="haha" />
-        </div>
-      );
+  constructor(props) {
+    super(props);
+    const { isUpdate, data } = this.props;
+    if (isUpdate) {
+      this.state = {
+        editorState: EditorState.createWithContent(ContentState.createFromBlockArray(htmlToDraft(data).contentBlocks))
+      };
+    } else {
+      this.state = {
+        editorState: EditorState.createEmpty()
+      };
     }
-}
-const mapStateToProps = state => ({
-  editorState: state.edtState.editorState
-});
-
-const mapDispatchToProps = dispatch => ({
-  EditorChange: editorState => {
-    dispatch(fetch_editorChange(editorState));
   }
-});
-export default connect(mapStateToProps, mapDispatchToProps)(EditorConvertToHTML);
+
+  onChange = editorState => {
+    const { setEditorData } = this.props;
+    setEditorData(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+  };
+
+  render() {
+    const { editorState } = this.state;
+
+    return (
+      <div>
+        <div className="EDIT">
+          <Editor
+            defaultEditorState={editorState}
+            toolbarClassName="toolbarClassName"
+            wrapperClassName="wrapperClassName"
+            editorClassName="editorClassName"
+            onEditorStateChange={this.onChange}
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default EditorConvertToHTML;

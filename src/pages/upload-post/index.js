@@ -9,16 +9,12 @@ import UploadImage from '../../components/uploadimage';
 import services from './services/upload_post';
 import Loading from '../../components/loading';
 import ListImage from '../../components/listimage';
-import { fetch_reset } from './store/uploadSlice';
+import { fetch_reset, setEditor } from './store/uploadSlice';
 
 class UploadPost extends Component {
-    callAPI=async fileupload => {
+    callAPI = async fileUpload => {
       const data = new FormData();
-      // const url = new URL(fileupload);
-      // const file = url.toJSON();
-      // console.log(file);
-      // const file = new File(fileupload);
-      data.append('file', fileupload);
+      data.append('file', fileUpload);
       data.append('upload_preset', 'uploaddemo');
       const res = await fetch(
         'https://api.cloudinary.com/v1_1/kh-ng/image/upload',
@@ -33,13 +29,6 @@ class UploadPost extends Component {
 
     uploadPost = () => {
       const images = this.props.listImage;
-      // const images = [];
-      // const dataimage = this.props.listImage;
-      // for (let i = 0; i < dataimage.length; i++) {
-      //   const img = this.callAPI(dataimage[i]);
-      //   // console.log(file);
-      //   images.push(img);
-      // }
       const name = document.getElementById('namepost').value;
       const address = document.getElementById('addresspost').value;
       const price = document.getElementById('pricepost').value;
@@ -47,7 +36,7 @@ class UploadPost extends Component {
       const water = document.getElementById('waterpost').value;
       const electric = document.getElementById('electricpost').value;
       // console.log(name);
-      const editor = this.props.EditorState;
+      const { editor } = this.props.upload;
       // const infor = this.props.infor.data;
       // console.log(images)
       // console.log(images)
@@ -62,12 +51,16 @@ class UploadPost extends Component {
         owner: this.props.user.data.id,
         images
       };
-      console.log(informationRoom);
       if (images === undefined || editor === undefined) {
         alert('nhập đầy đủ thông tin');
       } else {
         this.props.dispatch(services(informationRoom));
       }
+    }
+
+    setEditorData = data => {
+      const { dispatch } = this.props;
+      dispatch(setEditor(data));
     }
 
     render() {
@@ -88,7 +81,7 @@ class UploadPost extends Component {
             </div>
             <div className="row">
               <div className="col-12">
-                <EditorConvertToHTML edtState={this.props.EditorState} />
+                <EditorConvertToHTML setEditorData={this.setEditorData} />
               </div>
             </div>
             <div className="row mt-5">
@@ -119,8 +112,6 @@ class UploadPost extends Component {
 }
 const mapStateToProps = state => ({
   listImage: state.uploadimage.dataimage,
-  EditorState: state.edtState.editorState,
-  infor: state.inforRenting,
   user: state.user,
   loading: state.uploadpost.loading,
   upload: state.uploadpost,
