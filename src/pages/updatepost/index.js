@@ -16,7 +16,9 @@ import { setEditor } from './store/updatepostSlice';
 class UpdatePost extends Component {
   componentWillMount=() => {
     console.log('willmount');
-    const { id } = this.props.match.params;
+    console.log(this.props.location);
+    const id = this.props.location.query;
+    console.log(id);
     this.props.dispatch(getPost(id));
   }
 
@@ -24,7 +26,7 @@ class UpdatePost extends Component {
       const { data } = this.props;
       const images = this.props.dataimages;
       const editor = data.description;
-      const { id } = this.props.match.params;
+      const id = this.props.location.query;
 
       const name = document.getElementById('namepost').value;
       const address = document.getElementById('addresspost').value;

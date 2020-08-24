@@ -6,12 +6,14 @@ import { AiFillMail, AiFillPhone } from 'react-icons/ai';
 import { FiUsers } from 'react-icons/fi';
 import upgrate from '../../components/requestupgrade/services/upgrade';
 import CardPost from '../../components/cardpost';
+import getPostUser from './services/getUserPost';
 
 class User extends Component {
   componentWillMount=() => {
     const { data } = this.props.user;
-    if (data.id !== 0 || data !== 3) {
-
+    if (data.role !== 0 || data.role !== 3) {
+      const { id } = data;
+      this.props.dispatch(getPostUser(id));
     }
   }
 
@@ -29,15 +31,19 @@ class User extends Component {
   render() {
     const { data } = this.props.user;
     const { status } = this.props.user;
+    let userpost = null;
     let main;
-    if (status === 200) {
+    if (status === 200 && this.props.statuspost === 200) {
       let role = 'Admin';
       let checkpost = true;
       if (data.role === 0 || data.role === 3) {
         role = 'Người dùng';
         checkpost = false;
-      } else if (data.role === 1) {
-        role = 'chủ trọ';
+      } else {
+        userpost = this.props.userpost.map((data, index) => <CardPost data={data} key={index} />);
+        if (data.role === 1) {
+          role = 'chủ trọ';
+        }
       }
       // console.log(data);
       main = (
@@ -86,9 +92,7 @@ class User extends Component {
                     <div className="row">
 
                       <div className="user-post col-12">
-                        <CardPost />
-                        <CardPost />
-                        <CardPost />
+                        {checkpost ? userpost : null}
                       </div>
                     </div>
                   </div>
@@ -108,6 +112,8 @@ class User extends Component {
   }
 }
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  userpost: state.userpost.dataroom,
+  statuspost: state.userpost.status
 });
 export default connect(mapStateToProps)(User);

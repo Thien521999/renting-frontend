@@ -4,15 +4,20 @@ import './cardpost.sass';
 
 class CardPost extends Component {
   render() {
+    const { data } = this.props;
+    const { id } = data;
+    // console.log(data);
     return (
       <div className="card cardpost">
         <div className="imgpost">
-          <img src="https://i.pinimg.com/236x/57/6d/09/576d09ba76fb5e62cafeb79c0151bc42.jpg" className="card-img-top imgcardpost" alt="" />
+          <img src={data.images[0]} className="card-img-top imgcardpost" alt="" />
         </div>
         <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <Link to="#" className="btn btn-primary">Go somewhere</Link>
+          <h5 className="card-title">{data.name}</h5>
+          <div className="btn-userpost">
+            <Link type="button" to={{ pathname: '/update_post', query: id }} className="btn btn-outline-success">Cập nhật</Link>
+            <Link type="button" to={`/detail/id=${id}`} className="btn btn-outline-warning">Chi tiết</Link>
+          </div>
         </div>
       </div>
     );
