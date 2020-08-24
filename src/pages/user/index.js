@@ -77,12 +77,11 @@ class User extends Component {
                       </div>
                       <div>
                         {/* <Link className="btn btn-primary" to="/change_password" type="submit">Đổi mật khẩu</Link> */}
-                        {!checkpost ? <button onClick={this.upgradeUser} className="btn btn-primary" to="/change_password" type="submit">nâng cấp tài khoản</button> : null}
+
                       </div>
 
                     </div>
                     <div className="user gr-btn col-4">
-                      {checkpost ? <Link to="#" type="button" className="btn btn-outline-primary">Phòng trọ</Link> : null}
                       {!checkpost ? <Link to="#" type="button" className="btn btn-outline-primary">Nâng cấp TK</Link> : null}
                       <Link to="/change_password" type="button" className="btn btn-outline-primary">Đổi mật khẩu</Link>
                       {checkpost ? <Link to="upload_post" type="button" className="btn btn-outline-primary">Đăng bài</Link> : <div />}
