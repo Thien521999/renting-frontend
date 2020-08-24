@@ -49,12 +49,15 @@ class UploadPost extends Component {
         water,
         electric,
         owner: this.props.user.data.id,
-        images
+        images,
+        vote: []
       };
       if (images === undefined || editor === undefined) {
         alert('nhập đầy đủ thông tin');
       } else {
+        console.log(informationRoom);
         this.props.dispatch(services(informationRoom));
+        alert('đăng bài thành công');
       }
     }
 
@@ -93,7 +96,7 @@ class UploadPost extends Component {
           </div>
         </div>
       );
-      if (this.props.user.data.role === 0) { component = <Redirect push to="/notfound" />; }
+      if (this.props.user.data.role === 0 || this.props.user.data.role === 3) { component = <Redirect push to="/notfound" />; }
       if (this.props.upload.status === 201) {
         // const { id } = this.props.upload.data;
         alert('đăng bài thành công');

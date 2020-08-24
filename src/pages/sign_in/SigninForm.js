@@ -20,9 +20,9 @@ class SigninForm extends Component {
           validationSchema={Yup.object({
             email: Yup.string()
               .email('Invalid email address')
-              .required('required'),
+              .required(),
             password: Yup.string()
-              .required('required')
+              .required()
           })}
         >
           { ({ errors, touched }) => (

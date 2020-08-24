@@ -22,7 +22,10 @@ class Detail extends Component {
   }
 
   vote=() => {
-    const { id } = this.props.user.data;
+    let id;
+    if (this.props.user.data) {
+      id = this.props.user.data.id;
+    }
     if (id === undefined) {
       alert('bạn chưa đăng nhập hệ thống');
     } else {
@@ -55,8 +58,12 @@ class Detail extends Component {
     let slide = <div>Không có dữ liệu</div>;
 
     if (status === 200) {
-      const { id } = this.props.user.data;
+      let id = -1;
+      if (this.props.user.status === 200) {
+        id = this.props.user.data.id;
+      }
       const { vote } = this.props.detail.data;
+      console.log(vote);
       let voted;
       if (vote.indexOf(id) !== -1) {
         voted = true;

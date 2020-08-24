@@ -5,7 +5,7 @@ import { Redirect } from 'react-router';
 // import EditorConvertToHTML from '../../components/edittor';
 import UploadImage from '../../components/uploadimage';
 // import SlideImage from '../../components/slideimage';
-import services from '../upload-post/services/upload_post';
+import updatepost from './services/updatepost';
 import Loading from '../../components/loading';
 import ListImage from '../../components/listimage';
 import getPost from './services/getPost';
@@ -22,8 +22,9 @@ class UpdatePost extends Component {
 
     uploadPost = () => {
       const { data } = this.props;
-      const { images } = data;
+      const images = this.props.dataimages;
       const editor = data.description;
+      const { id } = this.props.match.params;
 
       const name = document.getElementById('namepost').value;
       const address = document.getElementById('addresspost').value;
@@ -36,6 +37,7 @@ class UpdatePost extends Component {
       // console.log(images)
       // console.log(images)
       const informationRoom = {
+        id,
         name,
         description: editor,
         price,
@@ -44,15 +46,17 @@ class UpdatePost extends Component {
         water,
         electric,
         owner: this.props.user.data.id,
-        images
+        images,
+        vote: []
       };
 
       console.log(informationRoom);
-      // if (images === undefined || editor === undefined || infor === undefined) {
-      //   alert('nhập đầy đủ thông tin');
-      // } else {
-      //   this.props.dispatch(services(infor.name, editor, infor.price, infor.address, infor.area, infor.water, infor.electric, this.props.user.data.id, images));
-      // }
+      // bắt chưa đủ
+      if (images === undefined || editor === undefined || informationRoom === undefined) {
+        alert('nhập đầy đủ thông tin');
+      } else {
+        this.props.dispatch(updatepost(informationRoom));
+      }
     }
 
     setEditorData = data => {
@@ -61,6 +65,7 @@ class UpdatePost extends Component {
     }
 
     render() {
+      // console.log(this.props.dataimages);
       const { data } = this.props;
       let component;
       if (this.props.loading) {
@@ -76,7 +81,7 @@ class UpdatePost extends Component {
                 </div>
                 <div className="col-7">
                   <UploadImage />
-                  <ListImage data={this.props.data.images} />
+                  <ListImage data={this.props.dataimages} />
                 </div>
                 <div />
               </div>
@@ -101,7 +106,6 @@ class UpdatePost extends Component {
       //   alert('đăng bài thành công');
       // }
       // if (this.props.user.status !== 200) { component = <Redirect push to="/home" />; }
-
       return (
         <div>
           {component}
@@ -110,14 +114,9 @@ class UpdatePost extends Component {
     }
 }
 const mapStateToProps = state => ({
-  // listImage: state.update.dataimage,
-  // EditorState: state.edtState.editorState,
-  // infor: state.inforRenting,
   user: state.user,
-  // loading: state.uploadpost.loading,
-  // upload: state.uploadpost,
-  // dataImage: state.uploadimage.data
   data: state.updatePost.data,
   loading: state.updatePost.loading,
+  dataimages: state.uploadimage.dataimage
 });
 export default connect(mapStateToProps)(UpdatePost);

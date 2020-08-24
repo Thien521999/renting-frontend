@@ -17,10 +17,13 @@ const UploadPostSlice = createSlice({
     fetch_success: (state, action) => {
       const { data, status } = action.payload;
       // console.log('upload thành công');
-      // console.log(action.payload);
-      state.data = data;
-      state.status = status;
-      state.loading = false;
+      console.log(action.payload);
+      return {
+        ...state,
+        data,
+        status,
+        loading: false
+      };
     },
 
     fetch_error: (state, action) => {

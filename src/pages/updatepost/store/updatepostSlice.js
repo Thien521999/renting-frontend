@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { data } from 'jquery';
 
 const updatepostSlice = createSlice({
   name: 'updatepost',

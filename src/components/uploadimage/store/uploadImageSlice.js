@@ -21,21 +21,25 @@ const UploadImageSlice = createSlice({
       data: []
     }),
     deleteByIndex: (state, action) => {
-      // console.log('vào slice');
       const index = action.payload;
-      // state.data.splice(index, 1);
       state.dataimage.splice(index, 1);
-      // URL.revokeObjectURL(state.dataimage[index]);
     },
     addDataImage: (state, action) => {
       console.log(action.payload);
       // state.data.push(action.payload);
+    },
+    addArrayDataImage: (state, action) => {
+      console.log(action.payload);
+      return {
+        ...state,
+        dataimage: action.payload
+      };
     }
   }
 });
 
 export const {
-  fetch_addImage, fetch_reset, deleteByIndex, addDataImage
+  fetch_addImage, fetch_reset, deleteByIndex, addDataImage, addArrayDataImage
 } = UploadImageSlice.actions;
 
 export default UploadImageSlice.reducer;

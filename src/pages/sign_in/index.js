@@ -41,7 +41,7 @@ class Sign_in extends Component {
         <div className="container widthform">
           <div className="row">
             <SigninForm signIn={this.signIn} />
-            <div>sai user name hoặc mật khẩu</div>
+            <div className="errormess">* sai user name hoặc mật khẩu</div>
           </div>
         </div>
       );

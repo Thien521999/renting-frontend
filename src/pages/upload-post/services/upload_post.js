@@ -8,7 +8,7 @@ export default information => function (dispatch) {
     ...information
   })
     .then(res => {
-      // console.log(res.data)
+      console.log(res.data);
       dispatch(fetch_success(res.data));
     })
     .catch(error => {

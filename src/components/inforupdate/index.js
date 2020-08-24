@@ -9,12 +9,13 @@ import * as Yup from 'yup';
 
 class InforUpdate extends Component {
   render() {
+    const { data } = this.props;
     return (
       <div>
         <div className="card card-infor">
           <Formik
             initialValues={{
-              name: '', address: '', price: '', area: '', water: '', electric: ''
+              name: data.name, address: data.address, price: data.price, area: data.area, water: data.water, electric: data.electric
             }}
 
             validationSchema={Yup.object({
@@ -41,7 +42,7 @@ class InforUpdate extends Component {
                   <div className="row mt-2">
                     <div className="col-12">
                       <div>Tên</div>
-                      <Field value={this.props.data.name} name="name" id="namepost" className="form-control" placeholder="Tên tiêu đề" />
+                      <Field name="name" id="namepost" className="form-control" placeholder="Tên tiêu đề" />
                       {errors.name && touched.name ? (
                         <div className="errormess">
                           *
@@ -49,7 +50,7 @@ class InforUpdate extends Component {
                         </div>
                       ) : null}
                       <div className=" mt-2">Địa chỉ</div>
-                      <Field name="address" value={this.props.data.address} id="addresspost" className="form-control" placeholder="Địa chỉ" />
+                      <Field name="address" id="addresspost" className="form-control" placeholder="Địa chỉ" />
                       {errors.address && touched.address ? (
                         <div className="errormess">
                           *
@@ -57,7 +58,7 @@ class InforUpdate extends Component {
                         </div>
                       ) : null}
                       <div className="mt-3">Giá thuê</div>
-                      <Field name="price" value={this.props.data.price} id="pricepost" type="number" className="form-control" placeholder="Giá thuê" />
+                      <Field name="price" id="pricepost" type="number" className="form-control" placeholder="Giá thuê" />
                       {errors.price && touched.price ? (
                         <div className="errormess">
                           *
@@ -65,7 +66,7 @@ class InforUpdate extends Component {
                         </div>
                       ) : null}
                       <div className="mt-3">Diện tích</div>
-                      <Field name="area" value={this.props.data.area} id="areapost" type="number" className="form-control" placeholder="Diện tích" />
+                      <Field name="area" id="areapost" type="number" className="form-control" placeholder="Diện tích" />
                       {errors.area && touched.area ? (
                         <div className="errormess">
                           *
@@ -77,7 +78,7 @@ class InforUpdate extends Component {
                   <div className="row">
                     <div className="col-12">
                       <div className="mt-3">Giá nước </div>
-                      <Field name="water" value={this.props.data.water} id="waterpost" type="number" className="form-control" placeholder="Giá nước" />
+                      <Field name="water" id="waterpost" type="number" className="form-control" placeholder="Giá nước" />
                       {errors.water && touched.water ? (
                         <div className="errormess">
                           *
@@ -85,7 +86,7 @@ class InforUpdate extends Component {
                         </div>
                       ) : null}
                       <div className="mt-3">Giá điện</div>
-                      <Field name="electric" value={this.props.data.electric} id="electricpost" type="number" className="form-control" placeholder="Giá điện" />
+                      <Field name="electric" id="electricpost" type="number" className="form-control" placeholder="Giá điện" />
                       {errors.electric && touched.electric ? (
                         <div className="errormess">
                           *
