@@ -6,33 +6,31 @@ class Table extends Component {
     const { data } = this.props;
     // console.log(data);
     const table2 = (
-      <div>
-        <table className="table TableCT">
-          <thead className="thead-dark">
-            <tr>
-              <th className="col">Thông tin</th>
-              <th> </th>
-              <th className="col"> </th>
-              <th> </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Địa chỉ</th>
-              <td>{data.address}</td>
-              <th scope="row">Giá thuê</th>
-              <td>{data.price}</td>
-            </tr>
-            <tr>
-              <th scope="row">Giá nước</th>
-              <td>{data.water}</td>
-              <th scope="row">Giá điện</th>
-              <td>{data.electric}</td>
-            </tr>
+      <table className="table TableCT">
+        <thead className="thead-dark">
+          <tr>
+            <th className="col">Thông tin</th>
+            <th> </th>
+            <th className="col"> </th>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Địa chỉ</th>
+            <td>{data.address}</td>
+            <th scope="row">Giá thuê</th>
+            <td>{data.price}</td>
+          </tr>
+          <tr>
+            <th scope="row">Giá nước</th>
+            <td>{data.water}</td>
+            <th scope="row">Giá điện</th>
+            <td>{data.electric}</td>
+          </tr>
 
-          </tbody>
-        </table>
-      </div>
+        </tbody>
+      </table>
     );
     const table = table2;
 

@@ -8,7 +8,7 @@ import votepost from './services/votepost';
 
 class Detail extends Component {
   componentDidUpdate = () => {
-    const a = document.getElementById('hahaha');
+    const a = document.getElementById('description');
     a.innerHTML = this.props.detail.data.description;
   }
 
@@ -96,7 +96,7 @@ class Detail extends Component {
           <div className="container d-flex pt-5 justify-content-center">
             <div className="card align-self-center">
               <div className="row align-items-start">
-                <div className="col-md-12">
+                <div className="col-12" style={{ width: '100%' }}>
                   <div id="carousel" className="card-block carousel slide" data-ride="carousel">
                     <ol className="carousel-indicators">
                       <li data-target="#carousel" data-slide-to="0" className="active" />
@@ -124,15 +124,13 @@ class Detail extends Component {
 
           <div className="container">
             <div className="row">
-              <div className="col-1" />
-              <div className="col-10">
+              <div className="col-12" style={{ padding: '0 10%' }}>
                 <Table data={infor} />
               </div>
             </div>
             <div className="row">
-              <div className="col-1"> </div>
-              <div className="col-10 ml-2">
-                <div id="hahaha"> </div>
+              <div className="col-12" style={{ padding: '0 10%' }}>
+                <div id="description"> </div>
               </div>
             </div>
           </div>

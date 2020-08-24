@@ -9,17 +9,9 @@ import services from './service/sv_post';
 
 class Post extends React.Component {
   Detail = id => {
-    // console.log(id);
     const { dispatch } = this.props;
     dispatch(services(id));
   }
-
-  // componentDidMount = () => {
-  //   const { data } = this.props;
-  //   const id = String(data.id);
-  //   const element = document.getElementById(id);
-  //   // element.innerHTML = this.props.data.description;
-  // }
 
   render() {
     const { data } = this.props;
@@ -40,9 +32,8 @@ class Post extends React.Component {
         </div>
       );
     });
-    let compo;
 
-    compo = (
+    const compo = (
       <div className="container d-flex pt-5 justify-content-center">
         <div className="card align-self-center">
           <div className="row align-items-start">
@@ -75,7 +66,7 @@ class Post extends React.Component {
                   </div>
                 </div>
                 <br />
-                <Link to={`/detail/id=${data.id}`} className="mt-auto btn btn-primary">Read more</Link>
+                <Link to={`/detail/id=${data.id}`} className="mt-auto btn">Read more</Link>
               </div>
             </div>
 
