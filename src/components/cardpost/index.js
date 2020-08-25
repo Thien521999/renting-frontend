@@ -15,7 +15,7 @@ class CardPost extends Component {
         <div className="card-body">
           <h5 className="card-title">{data.name}</h5>
           <div className="btn-userpost">
-            <Link type="button" to={{ pathname: '/update_post', query: id }} className="btn btn-outline-success">Cập nhật</Link>
+            <Link type="button" to={{ pathname: '/update_post', query: id }} className="btn">Cập nhật</Link>
             <Link type="button" to={`/detail/id=${id}`} className="btn btn-outline-warning">Chi tiết</Link>
           </div>
         </div>

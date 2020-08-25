@@ -7,6 +7,8 @@ import Post from '../../components/post';
 import services from './service/sv_home';
 import { fetchReset } from '../detail/store/detailSlice';
 import Loading from '../../components/loading';
+// import Next from '../../components/next';
+// import Previous from '../../components/previous';
 
 class Home extends React.Component {
     componentWillMount = () => {
@@ -32,6 +34,8 @@ componentDidMount=() => {
       return (
         <div className="HomePage">
           {this.props.loading ? <Loading /> : <div />}
+          {/* <Next />
+          <Previous /> */}
           {component}
         </div>
 

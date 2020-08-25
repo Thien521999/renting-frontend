@@ -11,6 +11,7 @@ class RequestItem extends Component {
     };
     console.log(userUpgrade);
     this.props.dispatch(upgrade(userUpgrade));
+    alert('Nâng cấp thành công');
   }
 
   render() {

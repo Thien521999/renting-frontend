@@ -88,7 +88,7 @@ class UploadPost extends Component {
               <div className="col-5">
                 <InforRengting />
               </div>
-              <div className="col-7">
+              <div className="col-7 Images">
                 <UploadImage />
                 {/* <SlideImage Images={this.props.listImage} /> */}
                 <ListImage data={this.props.listImage} />
@@ -102,7 +102,7 @@ class UploadPost extends Component {
             </div>
             <div className="row mt-5">
               <div className="col-4">
-                <button onClick={this.uploadPost} name="" id="btnPost" className="btn btn-primary" type="button" value="">Đăng bài</button>
+                <button onClick={this.uploadPost} name="" id="btnPost" className="btn" type="button" value="">Đăng bài</button>
               </div>
             </div>
             <div />

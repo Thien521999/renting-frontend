@@ -82,10 +82,10 @@ class User extends Component {
 
                     </div>
                     <div className="user gr-btn col-4">
-                      {!checkpost ? <button onClick={this.upgradeUser} type="button" className="btn btn-outline-primary">Nâng cấp TK</button> : null}
-                      {role === 'Admin' ? <Link to="/admin" type="button" className="btn btn-outline-primary">Quản lý người dùng</Link> : null}
-                      <Link to="/change_password" type="button" className="btn btn-outline-primary">Đổi mật khẩu</Link>
-                      {checkpost ? <Link to="upload_post" type="button" className="btn btn-outline-primary">Đăng bài</Link> : <div />}
+                      {!checkpost ? <button onClick={this.upgradeUser} type="button" className="btn ">Nâng cấp TK</button> : null}
+                      {role === 'Admin' ? <Link to="/admin" type="button" className="btn ">Quản lý người dùng</Link> : null}
+                      <Link to="/change_password" type="button" className="btn ">Đổi mật khẩu</Link>
+                      {checkpost ? <Link to="upload_post" type="button" className="btn ">Đăng bài</Link> : <div />}
                     </div>
                   </div>
                   <div className="user-function container">

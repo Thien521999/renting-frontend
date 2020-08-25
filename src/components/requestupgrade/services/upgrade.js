@@ -10,6 +10,7 @@ export default userUpgrade => function (dispatch) {
     // console.log('lấy được dữ liệu');
     const { data } = res;
     console.log(data);
+    // alert('Nâng cấp thành công');
     // dispatch(fetchSuccess(res.data));
   })
     .catch(error => {

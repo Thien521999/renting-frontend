@@ -24,8 +24,12 @@ class Admin extends Component {
       compo = <RequestUpgrade data={this.props.dataAdmin.userupgrade} />;
     }
 
-    if (this.props.checkadmin !== 2) {
-      compo = <Redirect push to="/notfound" />;
+    if (this.props.checkadmin.status === 200) {
+      if (this.props.checkadmin.data.role !== 2) {
+        compo = <Redirect push to="/notfound" />;
+      }
+    } else {
+      compo = <Redirect push to="/login" />;
     }
     return (
       <div className="pageAdmin">
@@ -41,6 +45,6 @@ class Admin extends Component {
 }
 const mapStateToProps = state => ({
   dataAdmin: state.admin,
-  checkadmin: state.user.data.role
+  checkadmin: state.user
 });
 export default connect(mapStateToProps)(Admin);

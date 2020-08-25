@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetch_addImage, addDataImage } from './store/uploadImageSlice';
+import './uploadimage.sass';
 // import SlideImage from '../slideimage'
 
 class UploadImage extends Component {
@@ -39,7 +40,7 @@ class UploadImage extends Component {
 
     render() {
       return (
-        <div>
+        <div className="uploadImage">
           <input
             name="file"
             id="file"
