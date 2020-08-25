@@ -18,6 +18,7 @@ const UploadPostSlice = createSlice({
       const { data, status } = action.payload;
       // console.log('upload thành công');
       console.log(action.payload);
+
       return {
         ...state,
         data,

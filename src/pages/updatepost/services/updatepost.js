@@ -8,7 +8,11 @@ export default information => function (dispatch) {
     ...information
   })
     .then(res => {
-      alert('update thành công');
+      if (res.data.status !== 200) {
+        alert('update thất bại');
+      } else {
+        alert('update thành công');
+      }
       console.log(res.data);
     })
     .catch(error => {

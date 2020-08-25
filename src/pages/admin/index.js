@@ -32,7 +32,7 @@ class Admin extends Component {
         <div>
           <GuideContent />
         </div>
-        <div className="container">
+        <div className="container manager">
           {compo}
         </div>
       </div>

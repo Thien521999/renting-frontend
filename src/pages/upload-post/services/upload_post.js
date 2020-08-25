@@ -8,7 +8,12 @@ export default information => function (dispatch) {
     ...information
   })
     .then(res => {
-      console.log(res.data);
+      // alert('đăng bài thành công');
+      if (res.data.status !== 201) {
+        alert('đăng bài thất bại');
+      } else {
+        alert('đăng bài thành công!');
+      }
       dispatch(fetch_success(res.data));
     })
     .catch(error => {

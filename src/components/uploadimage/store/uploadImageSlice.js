@@ -15,7 +15,7 @@ const UploadImageSlice = createSlice({
       state.dataimage.push(action.payload);
     },
 
-    fetch_reset: (state, action) => ({
+    fetchReset: (state, action) => ({
       ...state,
       dataimage: [],
       data: []
@@ -39,7 +39,7 @@ const UploadImageSlice = createSlice({
 });
 
 export const {
-  fetch_addImage, fetch_reset, deleteByIndex, addDataImage, addArrayDataImage
+  fetch_addImage, fetchReset, deleteByIndex, addDataImage, addArrayDataImage
 } = UploadImageSlice.actions;
 
 export default UploadImageSlice.reducer;

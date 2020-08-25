@@ -7,7 +7,6 @@ import { BsFillGrid3X3GapFill } from 'react-icons/bs';
 import { changeKey } from '../../pages/search/store/searchSlice';
 import getdatasearch from '../../pages/search/services/getdatasearch';
 import { fetch_exit, fetch_displayMenu } from '../../pages/sign_in/store/signInSlice';
-import Menu from './Menu';
 
 class Navigationbar extends Component {
     changekey=e => {
@@ -59,17 +58,7 @@ class Navigationbar extends Component {
           compo = isNotLogin;
           break;
       }
-      const { displayMenu } = this.props.user;
-      let menu;
-      if (displayMenu) {
-        menu = (
-          <div id="menu">
-            <Menu />
-          </div>
-        );
-      } else {
-        menu = <div />;
-      }
+
       return (
         <div id="Navigation">
           <nav className="navbar navbar-expand-lg navigation">
