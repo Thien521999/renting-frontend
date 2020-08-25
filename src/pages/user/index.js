@@ -82,9 +82,9 @@ class User extends Component {
 
                     </div>
                     <div className="user gr-btn col-4">
-                      {!checkpost ? <Link to="#" type="button" className="btn btn-outline-primary">Nâng cấp TK</Link> : null}
-                      <Link to="/change_password" type="button" className="btn btn-outline-primary">Đổi mật khẩu</Link>
-                      {checkpost ? <Link to="upload_post" type="button" className="btn btn-outline-primary">Đăng bài</Link> : <div />}
+                      {!checkpost ? <Link to="#" type="button" className="btn">Nâng cấp TK</Link> : null}
+                      <Link to="/change_password" type="button" className="btn">Đổi mật khẩu</Link>
+                      {checkpost ? <Link to="upload_post" type="button" className="btn">Đăng bài</Link> : <div />}
                     </div>
                   </div>
                   <div className="user-function container">

@@ -12,7 +12,7 @@ class UserItem extends Component {
             <BsFillPersonCheckFill />
             <span>{this.props.data.email}</span>
           </div>
-          <button type="button" className="btn btn-outline-success">chi tiết</button>
+          <button type="button" className="btn">Chi tiết</button>
 
         </div>
         <hr />

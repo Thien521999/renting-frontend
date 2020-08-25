@@ -10,7 +10,6 @@ import { Displayusers, Displayrequest } from '../../pages/admin/store/adminSlice
 
 class GuideContent extends Component {
     displayUsers=() => {
-      console.log('hiện usêr');
       this.props.displayUsers();
     }
 
@@ -44,7 +43,7 @@ class GuideContent extends Component {
               </div>
               <div onClick={this.props.displayRequest}>
                 <AiFillMail className="icon" />
-                <span>YÊU CẦU NÂN CẤP</span>
+                <span>YÊU CẦU NÂNG CẤP</span>
               </div>
             </div>
             <hr />

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import GuideContent from '../../components/guide-content';
 import './admin.sass';
 import ManageUser from '../../components/mana_user';
 import RequestUpgrade from '../../components/requestupgrade';
 import getAllUser from './services/getalluser';
 import getRequest from './services/getRequestUpgrate';
-import { Redirect } from 'react-router';
 
 class Admin extends Component {
   componentWillMount=() => {
@@ -15,7 +15,7 @@ class Admin extends Component {
   }
 
   render() {
-    let compo = <div>đây là trang admin</div>;
+    let compo;
     // console.log(this.props.dataAdmin)
     if (this.props.dataAdmin.dp_dt_user) {
       compo = <ManageUser data={this.props.dataAdmin.datausers} />;

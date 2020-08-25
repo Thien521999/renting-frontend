@@ -24,7 +24,7 @@ class RequestItem extends Component {
               {this.props.data.email}
             </span>
           </div>
-          <button type="button" onClick={() => this.upgrade(this.props.data)} className="btn btn-outline-success">Nâng cấp</button>
+          <button type="button" onClick={() => this.upgrade(this.props.data)} className="btn">Nâng cấp</button>
         </div>
         <hr />
       </div>
