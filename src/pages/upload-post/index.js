@@ -9,9 +9,14 @@ import UploadImage from '../../components/uploadimage';
 import services from './services/upload_post';
 import Loading from '../../components/loading';
 import ListImage from '../../components/listimage';
-import { fetch_reset, setEditor } from './store/uploadSlice';
+import { setEditor } from './store/uploadSlice';
+import { fetchReset } from '../../components/uploadimage/store/uploadImageSlice';
 
 class UploadPost extends Component {
+  componentWillMount = () => {
+    this.props.dispatch(fetchReset());
+  }
+
     callAPI = async fileUpload => {
       const data = new FormData();
       data.append('file', fileUpload);
@@ -52,12 +57,12 @@ class UploadPost extends Component {
         images,
         vote: []
       };
-      if (images === undefined || editor === undefined) {
+      if (name === '' || address === '' || editor === '' || price === '' || area === '' || water === '' || electric === '' || images.length === 0) {
+        console.log(informationRoom);
         alert('nhập đầy đủ thông tin');
       } else {
         console.log(informationRoom);
         this.props.dispatch(services(informationRoom));
-        alert('đăng bài thành công');
       }
     }
 
@@ -65,6 +70,14 @@ class UploadPost extends Component {
       const { dispatch } = this.props;
       dispatch(setEditor(data));
     }
+
+    // componentDidUpdate=() => {
+    //   if (this.props.status !== 200) {
+    //     alert('lỗi đăng bài');
+    //   } else {
+    //     alert('đăng bài thành công');
+    //   }
+    // }
 
     render() {
       // console.log(this.props.infor.data);
@@ -97,12 +110,6 @@ class UploadPost extends Component {
         </div>
       );
       if (this.props.user.data.role === 0 || this.props.user.data.role === 3) { component = <Redirect push to="/notfound" />; }
-      if (this.props.upload.status === 201) {
-        // const { id } = this.props.upload.data;
-        alert('đăng bài thành công');
-        // component = <Redirect push to={`/detail/id=${id}`} />;
-        this.props.dispatch(fetch_reset());
-      }
       if (this.props.user.status !== 200) { component = <Redirect push to="/home" />; }
 
       return (
@@ -118,6 +125,7 @@ const mapStateToProps = state => ({
   user: state.user,
   loading: state.uploadpost.loading,
   upload: state.uploadpost,
-  dataImage: state.uploadimage.data
+  dataImage: state.uploadimage.data,
+  status: state.uploadpost.status
 });
 export default connect(mapStateToProps)(UploadPost);

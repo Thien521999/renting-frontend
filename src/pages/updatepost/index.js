@@ -48,8 +48,8 @@ class UpdatePost extends Component {
         vote: []
       };
 
-      // bắt chưa đủ
-      if (images === undefined || editor === undefined || informationRoom === undefined) {
+      if (name === '' || address === '' || editor === '' || price === '' || area === '' || water === '' || electric === '' || images.length === 0) {
+        console.log(informationRoom);
         alert('nhập đầy đủ thông tin');
       } else {
         this.props.dispatch(updatepost(informationRoom));
