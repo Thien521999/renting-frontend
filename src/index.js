@@ -50,6 +50,7 @@ ReactDOM.render(
           <PrivateRouter path="/upload_post" component={UploadPost} />
           <PrivateRouter path="/update_post" component={UpdatePost} />
           <Route path="/search?keyword=:keyword" component={Search} />
+          <Route path="/search" component={Search} />
           <Route component={NotFound} />
         </Switch>
         <footer>

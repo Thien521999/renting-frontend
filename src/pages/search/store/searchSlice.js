@@ -17,7 +17,8 @@ const searchSlice = createSlice({
     fetchSuccess: (state, action) => ({
       ...state,
       data: action.payload.data,
-      status: action.payload.status
+      status: action.payload.status,
+      loading: false
     }),
 
     fetchError: (state, action) => ({
@@ -27,6 +28,7 @@ const searchSlice = createSlice({
     }),
     changeKey: (state, action) => {
       const key = action.payload;
+      localStorage.setItem('keyword', key);
       return {
         ...state,
         keyword: key
